@@ -1,3 +1,8 @@
+package global;
+import global.card.Card;
+import global.card.dungeon_card.enumeration.RaceSpecification;
+import global.card.treasure_card.Gear;
+
 import java.util.List;
 
 
@@ -13,11 +18,13 @@ public class Player
 	 */
 	private HandPlayer hand;
 	
+	private int strength;
+	
 	private int level;
 	
 	private List<Gear> Gears;
 	
-	private Races race;
+	private RaceSpecification race;
 	
 	private int money;
 	
@@ -30,8 +37,9 @@ public class Player
 	{
 		this.pseudo = pseudo;
 		this.level = 1;
+		this.strength = this.level;
 		this.setMoney(0);
-		this.setRace(Races.human);
+		this.race = race.;
 	}
 	
 	/**
@@ -74,12 +82,12 @@ public class Player
 				this.level = level;
 		}
 
-	public Races getRace()
+	public RaceSpecification getRace()
 		{
 				return this.race;
 		}
 
-	public void setRace(Races race)
+	public void setRace(RaceSpecification race)
 		{
 				this.race = race;
 		}
@@ -118,6 +126,16 @@ public class Player
 	{
 		
 	}
+
+	public int getStrength()
+		{
+				return strength;
+		}
+
+	public void setStrength(int strength)
+		{
+				this.strength = strength;
+		}
 	 
 	
 }

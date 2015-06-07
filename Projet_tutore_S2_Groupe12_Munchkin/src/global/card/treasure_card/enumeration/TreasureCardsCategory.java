@@ -1,3 +1,4 @@
+package global.card.treasure_card.enumeration;
 
 public enum TreasureCardsCategory
 	{

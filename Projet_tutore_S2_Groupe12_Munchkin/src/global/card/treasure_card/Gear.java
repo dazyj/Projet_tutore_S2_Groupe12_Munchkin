@@ -1,3 +1,7 @@
+package global.card.treasure_card;
+
+import global.card.treasure_card.enumeration.TreasureCardsCategory;
+
 /**
  * 
  * @author Zyra
@@ -13,7 +17,7 @@ public class Gear extends TreasureCard
 		private final TreasureCardsCategory category;
 		
 		private final int power;
-
+		
 		/**
 		 * @param name
 		 * @param category

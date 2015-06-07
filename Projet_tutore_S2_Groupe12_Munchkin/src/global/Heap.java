@@ -1,3 +1,6 @@
+package global;
+
+import global.card.Card;
 
 import java.util.List;
 

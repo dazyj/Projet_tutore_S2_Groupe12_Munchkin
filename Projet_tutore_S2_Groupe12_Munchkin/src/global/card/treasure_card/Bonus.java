@@ -1,3 +1,8 @@
+package global.card.treasure_card;
+
+import global.Player;
+import global.card.treasure_card.enumeration.TreasureCardsCategory;
+
 /**
  * the bonus can help a {@link Player} or handicap a other {@link Player}
  * @author Rhuarc

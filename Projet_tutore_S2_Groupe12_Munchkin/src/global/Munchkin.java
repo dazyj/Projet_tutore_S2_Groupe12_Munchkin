@@ -1,4 +1,4 @@
-import java.util.*;
+package global;
 
 
 public class Munchkin

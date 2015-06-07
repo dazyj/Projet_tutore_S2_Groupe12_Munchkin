@@ -1,3 +1,9 @@
+package global.card.treasure_card;
+
+import global.Player;
+import global.card.treasure_card.enumeration.LevelEffectSpecification;
+import global.card.treasure_card.enumeration.TreasureCardsCategory;
+
 /**
  * the levelEffect impact the {@link Player} level.
  * 
@@ -9,24 +15,28 @@ public class LevelEffect extends TreasureCard
 		/**
 		 * name of the card
 		 */
-		private final String name;
+		private final LevelEffectSpecification name;
 		/**
 		 * the category of {@link LevelEffect} is level_effect
 		 */
 		private final TreasureCardsCategory category;
-
+		/**
+		 * number of level who gain the {@link Player}.
+		 */
 		private final int LevelNumberUp;
-
+		/**
+		 * number of level who other {@link Player} can lose.
+		 */
 		private final int levelNumberLess;
 
-		public LevelEffect(String name, int numberUp, int numberLess,
-				boolean haveTarget)
+
+		public LevelEffect(LevelEffectSpecification name)
 			{
 				super();
 				this.name = name;
 				this.category = TreasureCardsCategory.level_effect;
-				this.LevelNumberUp = numberUp;
-				this.levelNumberLess = numberLess;
+				this.LevelNumberUp = name.getLevelNumberUp();
+				this.levelNumberLess = name.getLevelNumberDown();
 			}
 
 		public TreasureCardsCategory getCategory()
@@ -34,9 +44,9 @@ public class LevelEffect extends TreasureCard
 				return category;
 			}
 
-		public String getName()
+		public LevelEffectSpecification getName()
 			{
-				return name;
+				return this.name;
 			}
 
 		public void effect(Player player, Player targetPlayer)

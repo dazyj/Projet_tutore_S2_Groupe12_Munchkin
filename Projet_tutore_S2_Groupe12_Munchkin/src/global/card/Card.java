@@ -1,3 +1,5 @@
+package global.card;
+
 public abstract class Card
 	{
 		/**

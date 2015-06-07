@@ -1,3 +1,11 @@
+package global.card.dungeon_card;
+
+import global.card.Card;
+import global.card.treasure_card.enumeration.DungeonCardCategory;
+
+
+
+
 /**
  * {@link Race} is a race for a player.
  * 

@@ -1,3 +1,9 @@
+package global.card.dungeon_card;
+
+import global.card.treasure_card.enumeration.DungeonCardCategory;
+
+
+
 public class Job extends DungeonCard
 	{
 		/**
