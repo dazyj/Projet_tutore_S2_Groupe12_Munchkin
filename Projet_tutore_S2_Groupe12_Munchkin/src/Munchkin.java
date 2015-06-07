@@ -11,7 +11,7 @@ public class Munchkin
 	
 	public static void main(String[] args)
 	{
-		System.out.println("Bienvenue dans le Munchkin, nous llons procéder à la création d'une nouvelle partie.");
+		System.out.println("Bienvenue dans le Munchkin, nous allons procéder à la création d'une nouvelle partie.");
 		Munchkin.createGame();
 	}
 
