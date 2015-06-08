@@ -9,8 +9,6 @@ import global.card.treasure_card.enumeration.*;
 
 import java.util.*;
 
-
-
 public class Player
 {
 	/**
@@ -110,174 +108,64 @@ public class Player
 	{
 		
 	}
-<<<<<<< Upstream, based on origin/master
->>>>>>> 59291a6 commit share 08/06/2015 11:53
-
-		/**
-		 * The hand of the player where he stocks the cards that he hasn't shown
-		 * to the others.
-		 */
-		private HandPlayer hand;
-
-		private int strength;
-
-		private int level;
-
-		private String race;
-
-		private List<Equipment> playerEquipment;
-
-		/**
-		 * Create a new player with his pseudo.
-		 * 
-		 * @param pseudo
-		 */
-		public Player(String pseudo, RaceSpecification race)
-			{
-				race = RaceSpecification.human;
-				this.pseudo = pseudo;
-				this.hand = new HandPlayer();
-				this.level = 1;
-				this.strength = this.level;
-				this.race = race.getName();
-				this.playerEquipment = new ArrayList<Equipment>();
-			}
-
-		/**
-		 * The method that return the card that the player want to put.
-		 * 
-		 * @return
-		 */
-		public Card ChooseCardToPut(String name)
-			{
-				return null;
-			}
-
-		/**
-		 * The method that send a card from the heap to the hand of the player.
-		 * 
-		 * @param heap
-		 */
-		public void sendCard(Heap heap)
-			{
-				if(this.hand.getHandPlayer().size() < this.hand.getMaximumNumberCard())
-					{
-						this.hand.getHandPlayer().add(heap.RemoveFirstCard());
-					}
-				
-			}
-
-		public int getLevel()
-			{
-				return this.level;
-			}
-
-		public void setLevel(int level)
-			{
-				this.level = level;
-			}
-
-		public String getRace()
-			{
-				return this.race;
-			}
-
-		public void setRace(RaceSpecification race)
-			{
-				this.race = race.getName();
-			}
-
-		public String getPseudo()
-			{
-				return pseudo;
-			}
-
-		public HandPlayer getHand()
-			{
-				return hand;
-			}
-
-		public int getStrength()
-			{
-				return strength;
-			}
-
-		public void setStrength(int strength)
-			{
-				this.strength = strength;
-<<<<<<< Upstream, based on origin/master
-			}
-=======
-		}
-<<<<<<< Upstream, based on origin/master
-<<<<<<< Upstream, based on origin/master
->>>>>>> 59291a6 commit share 08/06/2015 11:53
-
-		public List<Equipment> getPlayerEquipment()
-			{
-				return playerEquipment;
-			}
-
-<<<<<<< Upstream, based on origin/master
-		public void equipEquipment(String name)
-			{
-				ListIterator<Card> iterator = this.hand.getHandPlayer().listIterator();
-				while(iterator.hasNext())
-					{
-						if(iterator.next().getName() == name)
-							{
-								if(iterator.next() instanceof Equipment)
-								{
-									this.playerEquipment.add((Equipment) this.hand.getHandPlayer().get(iterator.previousIndex()));
-									return;
-								}
-							}
-						
-					}
-				
-			}
-=======
->>>>>>> 6d00eb8 commit réunif
 		
 	public int getLevel()
-		{
-			return this.level;
-		}
+	{
+		return this.level;
+	}
 
-	public void setLevel(int level)
-		{
-			this.level = level;
-		}
+	/**
+	 * The method that return the card that the player want to put.
+	 * 
+	 * @return
+	 */
+	public Card ChooseCardToPut(String name)
+	{
+		return null;
+	}
+
+	/**
+	 * The method that send a card from the heap to the hand of the player.
+	 * 
+	 * @param heap
+	 */
+	public void sendCard(Heap heap)
+	{
+		if(this.hand.getHandPlayer().size() < this.hand.getMaximumNumberCard())
+			{
+				this.hand.getHandPlayer().add(heap.RemoveFirstCard());
+			}
+	}
 
 	public String getRace()
-		{
-			return this.race;
-		}
+	{
+		return this.race;
+	}
 
 	public void setRace(RaceSpecification race)
-		{
-			this.race = race.getName();
-		}
+	{
+		this.race = race.getName();
+	}
 
 	public String getPseudo()
-		{
-			return pseudo;
-		}
+	{
+		return pseudo;
+	}
 
 	public HandPlayer getHand()
-		{
-			return hand;
-		}
+	{
+		return hand;
+	}
 
 	public int getStrength()
-		{
-			return strength;
-		}
-	
+	{
+		return strength;
+	}
+
 	public void setStrength(int strength)
-		{
-			this.strength = strength;
-		}
+	{
+		this.strength = strength;
+	}
 
 	public List<Equipment> getPlayerEquipment()
 		{
@@ -285,20 +173,17 @@ public class Player
 		}
 
 	public void equipEquipment(String name)
+	{
+		ListIterator<Card> iterator = this.hand.getHandPlayer().listIterator();
+		while(iterator.hasNext())
 		{
-			ListIterator<Card> iterator = this.hand.getHandPlayer().listIterator();
-			while(iterator.hasNext())
-				{
-					if(iterator.next().getName() == name)
-						{
-							if(iterator.next() instanceof Equipment)
-							{
-								this.playerEquipment.add((Equipment) this.hand.getHandPlayer().get(iterator.previousIndex()));
-								return;
-							}
-						}	
-				}	
-		}
+			if(iterator.next().getName() == name)
+			{
+				this.playerEquipment.add((Equipment) this.hand.getHandPlayer().get(iterator.previousIndex()));
+				return;
+			}
+		}	
+	}	
 	
 	public int getId()
 	{
@@ -311,7 +196,7 @@ public class Player
 	}
 
 	public void setPlayerEquipment(List<Equipment> playerEquipment)
-		{
-				this.playerEquipment = playerEquipment;
-		}
+	{
+		this.playerEquipment = playerEquipment;
+	}
 }
