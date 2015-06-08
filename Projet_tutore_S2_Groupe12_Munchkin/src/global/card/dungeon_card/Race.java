@@ -1,7 +1,8 @@
 package global.card.dungeon_card;
 
 import global.card.Card;
-import global.card.treasure_card.enumeration.DungeonCardCategory;
+import global.card.DungeonCard;
+import global.card.dungeon_card.enumeration.DungeonCardCategory;
 
 
 
@@ -29,6 +30,11 @@ public class Race extends DungeonCard
 				this.category = DungeonCardCategory.race;
 				this.name = name;
 			}
+		
+		public void power ( String name)
+		{
+			
+		}
 
 		public DungeonCardCategory getCategory()
 			{

@@ -1,6 +1,7 @@
 package global.card.dungeon_card;
 
-import global.card.treasure_card.enumeration.DungeonCardCategory;
+import global.card.DungeonCard;
+import global.card.dungeon_card.enumeration.DungeonCardCategory;
 
 
 

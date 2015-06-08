@@ -1,8 +1,9 @@
 package global.card.dungeon_card;
 
 import global.HandPlayer;
+import global.card.DungeonCard;
 import global.card.dungeon_card.enumeration.CardCurseSpecification;
-import global.card.treasure_card.enumeration.DungeonCardCategory;
+import global.card.dungeon_card.enumeration.DungeonCardCategory;
 
 
 public class CardCurse extends DungeonCard

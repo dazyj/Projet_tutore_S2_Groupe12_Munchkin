@@ -1,7 +1,5 @@
-package global.card.treasure_card;
+package global.card;
 
-import global.card.Card;
-import global.card.CardType;
 
 /**
  * the treasure card

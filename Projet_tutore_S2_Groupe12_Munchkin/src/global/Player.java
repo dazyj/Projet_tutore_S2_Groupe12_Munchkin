@@ -1,6 +1,7 @@
 package global;
 import global.card.Card;
 import global.card.dungeon_card.enumeration.RaceSpecification;
+import global.card.treasure_card.Equipment;
 import global.card.treasure_card.Gear;
 
 import java.util.List;
@@ -22,24 +23,26 @@ public class Player
 	
 	private int level;
 	
-	private List<Gear> Gears;
+	private String race;
 	
-	private RaceSpecification race;
+	private List<Equipment> playerEquipment = new List<Equipment>();
+		{
+		};
 	
-	private int money;
 	
 	/**
 	 * Create a new player with his pseudo.
 	 * 
 	 * @param pseudo
 	 */
-	public Player(String pseudo)
+	public Player(String pseudo, RaceSpecification race)
 	{
+		race = RaceSpecification.human;
 		this.pseudo = pseudo;
+		this.hand = new HandPlayer();
 		this.level = 1;
 		this.strength = this.level;
-		this.setMoney(0);
-		this.race = race.;
+		this.race = race.getName();
 	}
 	
 	/**
@@ -82,14 +85,14 @@ public class Player
 				this.level = level;
 		}
 
-	public RaceSpecification getRace()
+	public String getRace()
 		{
 				return this.race;
 		}
 
 	public void setRace(RaceSpecification race)
 		{
-				this.race = race;
+				this.race = race.getName();
 		}
 
 	public String getPseudo()
@@ -107,25 +110,6 @@ public class Player
 				this.hand = hand;
 		}
 
-	public List<Gear> getGears()
-		{
-				return Gears;
-		}
-
-
-	public int getMoney()
-		{
-				return money;
-		}
-
-	public void setMoney(int money)
-		{
-				this.money = money;
-		}
-	public void Toequip(Gear gear)
-	{
-		
-	}
 
 	public int getStrength()
 		{

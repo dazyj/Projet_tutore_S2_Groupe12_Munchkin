@@ -1,8 +1,8 @@
 package global.card.dungeon_card.enumeration;
 
-
 /**
  * different race possible.
+ * 
  * @author Rhuarc
  *
  */
@@ -10,8 +10,17 @@ package global.card.dungeon_card.enumeration;
 public enum RaceSpecification
 	{
 
-		human(),
-		dwarf(),
-		elf();
+		human("human"), dwarf("dwarf"), elf("elf");
+		private final String name;
 
+		private RaceSpecification(String name)
+			{
+				this.name = name;
+			}
+
+		public String getName()
+			{
+					return name;
+			}
+		
 	}

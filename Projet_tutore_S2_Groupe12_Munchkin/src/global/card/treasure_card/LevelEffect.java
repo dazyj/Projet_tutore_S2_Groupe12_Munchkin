@@ -1,8 +1,9 @@
 package global.card.treasure_card;
 
 import global.Player;
+import global.card.TreasureCard;
 import global.card.treasure_card.enumeration.LevelEffectSpecification;
-import global.card.treasure_card.enumeration.TreasureCardsCategory;
+import global.card.treasure_card.enumeration.TreasureCardCategory;
 
 /**
  * the levelEffect impact the {@link Player} level.
@@ -19,7 +20,7 @@ public class LevelEffect extends TreasureCard
 		/**
 		 * the category of {@link LevelEffect} is level_effect
 		 */
-		private final TreasureCardsCategory category;
+		private final TreasureCardCategory category;
 		/**
 		 * number of level who gain the {@link Player}.
 		 */
@@ -34,12 +35,12 @@ public class LevelEffect extends TreasureCard
 			{
 				super();
 				this.name = name;
-				this.category = TreasureCardsCategory.level_effect;
+				this.category = TreasureCardCategory.level_effect;
 				this.LevelNumberUp = name.getLevelNumberUp();
 				this.levelNumberLess = name.getLevelNumberDown();
 			}
 
-		public TreasureCardsCategory getCategory()
+		public TreasureCardCategory getCategory()
 			{
 				return category;
 			}
