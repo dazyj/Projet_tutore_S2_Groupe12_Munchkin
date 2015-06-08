@@ -11,25 +11,11 @@ public class Heap
 		 */
 		private List<Card> deck;
 
-		/**
-		 * check if the player can draw a card in the heap.
-		 * 
-		 * @return
-		 */
-		public boolean checkHeap()
-			{
-				return true;
-			}
-
 		public List<Card> getDeck()
 			{
 				return this.deck;
 			}
 
-		public void setDeck(List<Card> deck)
-			{
-				this.deck = deck;
-			}
 
 		/**
 		 * remove a first class on this packet

@@ -5,7 +5,6 @@ import global.card.DungeonCard;
 import global.card.dungeon_card.enumeration.DungeonCardCategory;
 import global.card.dungeon_card.enumeration.MonsterSpecification;
 
-
 /**
  * the {@link Player} can fight against the {@link Monster} for win a level.
  * 
@@ -37,7 +36,6 @@ public class Monster extends DungeonCard
 				this.treasureGain = monsterName.getTreasureGain();
 			}
 
-
 		public String getCategory()
 			{
 				return this.category;
@@ -65,12 +63,19 @@ public class Monster extends DungeonCard
 
 		public int getTreasureGain()
 			{
-					return treasureGain;
+				return treasureGain;
 			}
 
 		public void setTreasureGain(int treasureGain)
 			{
-					this.treasureGain = treasureGain;
+				this.treasureGain = treasureGain;
 			}
 
+		@Override
+		public String toString()
+		{
+			String ch = "";
+			return ch = ch + " [" +this.category + "] : " +this.getName() + "("+this.level+") [Treasure Gain : " +this.treasureGain+", LevelGain : "+this.levelGain+"]";
+		
+		}
 	}

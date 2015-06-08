@@ -27,8 +27,27 @@ public abstract class Card
 
 		public String getName()
 			{
-					return name;
+					return this.name;
 			}
+		public boolean equals(Object objectTest)
+		{
+			if (objectTest == this)
+				{
+					return true;
+				}
+			if (objectTest instanceof Card)
+				;
+				{
+					Card CastObject = (Card) objectTest;
+
+					if (this.name != CastObject.name)
+						{
+							return false;
+						}
+				}
+			return true;
+
+		}
 		
 
 	}

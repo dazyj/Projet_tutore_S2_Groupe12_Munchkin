@@ -1,5 +1,7 @@
 package global;
 
+import global.card.dungeon_card.Monster;
+import global.card.dungeon_card.enumeration.*;
 
 public class Munchkin
 {
@@ -12,7 +14,10 @@ public class Munchkin
 	public static void main(String[] args)
 	{
 		System.out.println("Bienvenue dans le Munchkin, nous allons procéder à la création d'une nouvelle partie.");
-		Munchkin.createGame();
+		Monster bailiff = new Monster(MonsterSpecification.bailiff);
+		System.out.println(bailiff.toString());
+		
+		
 	}
 
 	/**

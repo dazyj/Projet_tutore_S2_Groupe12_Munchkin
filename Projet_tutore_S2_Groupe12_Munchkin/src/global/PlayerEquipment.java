@@ -1,13 +1,10 @@
 package global;
 
-import Monster;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
 import global.card.treasure_card.*;
-import global.card.treasure_card.enumeration.EquipmentSpecification;
 
 /**
  * 
@@ -30,12 +27,14 @@ public class PlayerEquipment
 
 		public void DeleteEquipment(String name)
 			{
-				ListIterator<Equipment> iterator = this.playerEquipement.listIterator();
-				while(iterator.hasNext())
+				ListIterator<Equipment> iterator = this.playerEquipement
+						.listIterator();
+				while (iterator.hasNext())
 					{
-						if(iterator.next().getName() == name)
+						if (iterator.next().getName() == name)
 							{
-								remove.
+								iterator.remove();
+								return;
 							}
 					}
 			}
