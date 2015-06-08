@@ -1,29 +1,17 @@
 package global;
-<<<<<<< Upstream, based on origin/master
-<<<<<<< Upstream, based on origin/master
 
-=======
-<<<<<<< Upstream, based on origin/master
->>>>>>> 1a6d86b update commit précédent
-=======
->>>>>>> 9199ff2 Last Update
-import global.card.Card;
-import global.card.dungeon_card.enumeration.RaceSpecification;
-import global.card.treasure_card.Equipment;
+import global.*;
+import global.card.*;
+import global.card.dungeon_card.*;
+import global.card.dungeon_card.enumeration.*;
+import global.card.treasure_card.*;
+import global.card.treasure_card.enumeration.*;
 
-import java.util.ArrayList;
-<<<<<<< Upstream, based on origin/master
-import java.util.List;
-import java.util.ListIterator;
-=======
 import java.util.*;
 
 
->>>>>>> 1450676 commit Fight et phase Dungeon.
 
 public class Player
-<<<<<<< Upstream, based on origin/master
-=======
 {
 	/**
 	 * The name that the player use during the Game.
@@ -52,14 +40,10 @@ public class Player
 	 * @param pseudo
 	 */
 	public Player(String pseudo, RaceSpecification race)
->>>>>>> 59291a6 commit share 08/06/2015 11:53
 	{
-<<<<<<< Upstream, based on origin/master
 		/**
 		 * The name that the player use during the Game.
 		 */
-		private final String pseudo;
-=======
 		race = RaceSpecification.human;
 		this.pseudo = pseudo;
 		this.hand = new HandPlayer();
@@ -126,6 +110,7 @@ public class Player
 	{
 		
 	}
+<<<<<<< Upstream, based on origin/master
 >>>>>>> 59291a6 commit share 08/06/2015 11:53
 
 		/**
@@ -251,20 +236,69 @@ public class Player
 					}
 				
 			}
-		
-		
-
-
-	}
-
 =======
-	public void setPlayerEquipment(List<Equipment> playerEquipment)
+>>>>>>> 6d00eb8 commit réunif
+		
+	public int getLevel()
 		{
-				this.playerEquipment = playerEquipment;
+			return this.level;
 		}
-=======
-=======
->>>>>>> 9199ff2 Last Update
+
+	public void setLevel(int level)
+		{
+			this.level = level;
+		}
+
+	public String getRace()
+		{
+			return this.race;
+		}
+
+	public void setRace(RaceSpecification race)
+		{
+			this.race = race.getName();
+		}
+
+	public String getPseudo()
+		{
+			return pseudo;
+		}
+
+	public HandPlayer getHand()
+		{
+			return hand;
+		}
+
+	public int getStrength()
+		{
+			return strength;
+		}
+	
+	public void setStrength(int strength)
+		{
+			this.strength = strength;
+		}
+
+	public List<Equipment> getPlayerEquipment()
+		{
+			return playerEquipment;
+		}
+
+	public void equipEquipment(String name)
+		{
+			ListIterator<Card> iterator = this.hand.getHandPlayer().listIterator();
+			while(iterator.hasNext())
+				{
+					if(iterator.next().getName() == name)
+						{
+							if(iterator.next() instanceof Equipment)
+							{
+								this.playerEquipment.add((Equipment) this.hand.getHandPlayer().get(iterator.previousIndex()));
+								return;
+							}
+						}	
+				}	
+		}
 	
 	public int getId()
 	{
@@ -276,14 +310,8 @@ public class Player
 		this.idPlayer = i;
 	}
 
-	public List<Equipment> getPlayerEquipment()
-		{
-				return playerEquipment;
-		}
-
 	public void setPlayerEquipment(List<Equipment> playerEquipment)
 		{
 				this.playerEquipment = playerEquipment;
 		}
 }
->>>>>>> 59291a6 commit share 08/06/2015 11:53
