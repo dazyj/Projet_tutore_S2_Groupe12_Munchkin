@@ -50,19 +50,9 @@ public class Player
 		 * 
 		 * @return
 		 */
-		public Card ChooseCardToPut()
+		public Card ChooseCardToPut(String name)
 			{
 				return null;
-			}
-
-		/**
-		 * The method that the player use to choose a heap where draw a card.
-		 * 
-		 * @param heap
-		 */
-		public void chooseHeap(Heap heap)
-			{
-
 			}
 
 		/**
@@ -72,7 +62,11 @@ public class Player
 		 */
 		public void sendCard(Heap heap)
 			{
-
+				if(this.hand.getHandPlayer().size() < this.hand.getMaximumNumberCard())
+					{
+						this.hand.getHandPlayer().add(heap.RemoveFirstCard());
+					}
+				
 			}
 
 		public int getLevel()
