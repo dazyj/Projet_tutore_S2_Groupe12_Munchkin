@@ -32,10 +32,16 @@ public class Munchkin
 		{
 			Player temp = new Player(IHMPlayer.selectPseudo());
 			tabOfPlayers[i] = temp;
+			tabOfPlayers[i].asertId(i);
 		}
 		
 		Game gameOfMunchkin = new Game();
 		gameOfMunchkin.start();
+	}
+	
+	public static int getNbPlayer()
+	{
+		return nbPlayer;
 	}
 
 

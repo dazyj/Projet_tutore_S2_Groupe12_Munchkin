@@ -41,6 +41,15 @@ public class Game
 		
 		this.gamePhase = Phase.phaseFromNumPhase(numPhaseFromGamePhase);
 		this.gamePhase.isNotFinished();
+		switch (this.gamePhase)
+		{
+			case DUNGEON_CARD_1:
+				PhaseDungeonCard1.start();
+			case CONSEQUENCES:
+				PhaseConsequences.start();
+			case PERSONAL_PHASE:
+				PhasePersonnalPhase.start();				
+		}		
 	}
 	
 	/**
