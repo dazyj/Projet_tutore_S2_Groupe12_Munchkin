@@ -2,8 +2,7 @@ package global;
 import global.card.Card;
 import global.card.dungeon_card.enumeration.RaceSpecification;
 import global.card.treasure_card.Equipment;
-import global.card.treasure_card.Gear;
-
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,9 +24,7 @@ public class Player
 	
 	private String race;
 	
-	private List<Equipment> playerEquipment = new List<Equipment>();
-		{
-		};
+	private List<Equipment> playerEquipment;
 	
 	
 	/**
@@ -43,6 +40,7 @@ public class Player
 		this.level = 1;
 		this.strength = this.level;
 		this.race = race.getName();
+		this.setPlayerEquipment(new ArrayList<Equipment>());
 	}
 	
 	/**
@@ -119,6 +117,16 @@ public class Player
 	public void setStrength(int strength)
 		{
 				this.strength = strength;
+		}
+
+	public List<Equipment> getPlayerEquipment()
+		{
+				return playerEquipment;
+		}
+
+	public void setPlayerEquipment(List<Equipment> playerEquipment)
+		{
+				this.playerEquipment = playerEquipment;
 		}
 	 
 	

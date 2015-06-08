@@ -64,5 +64,23 @@ public class Equipment extends TreasureCard
 			{
 					return categoryEquipment;
 			}
+		public boolean equals (Object objectTest)
+		{
+			if(objectTest== this)
+				{
+					return true;
+				}
+			if(objectTest instanceof Equipment);
+				{
+					Equipment CastObject = (Equipment) objectTest;
+					
+					if(this.name != CastObject.name)
+						{
+							return false;
+						}
+				}
+			return true;
+			
+		}
 
 	}
