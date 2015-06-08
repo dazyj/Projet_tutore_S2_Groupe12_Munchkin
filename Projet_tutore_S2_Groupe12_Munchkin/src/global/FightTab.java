@@ -9,63 +9,39 @@ import global.card.treasure_card.enumeration.*;
 
 public class FightTab
 	{
-		private static int player;
+		private static Player player;
 		
-		private static int helper;
+		private static Player helper;
 		
-		private static String monster;
+		private static Monster monster;
 		
-		private static int treasure;
-		
-		private static int level;
-		
-		public static void editPlayer(int pPlayer)
+		public static void editPlayer(Player pPlayer)
 		{
 			player = pPlayer;
 		}
 		
-		public static void editHelper(int pHelper)
+		public static void editHelper(Player pHelper)
 		{
 			helper = pHelper;
 		}
 		
-		public static void editMonster(String pMonster)
+		public static void editMonster(Monster pMonster)
 		{
 			monster = pMonster;
 		}
 		
-		public static void editTreasure(int pTreasure)
-		{
-			treasure = pTreasure;
-		}
-		
-		public static void editLevel(int pLevel)
-		{
-			level = pLevel;
-		}
-		
-		public static int readPlayer()
+		public static Player readPlayer()
 		{
 			return player;
 		}
 		
-		public static int readHelper()
+		public static Player readHelper()
 		{
 			return helper;
 		}
 			
-		public static String readMonster()
+		public static Monster readMonster()
 		{
 			return monster;
-		}
-			
-		public static int readTreasure()
-		{
-			return treasure;
-		}
-			
-		public static int readLevel()
-		{
-			return level;
 		}
 	}

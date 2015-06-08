@@ -12,8 +12,14 @@ import global.card.dungeon_card.enumeration.RaceSpecification;
 import global.card.treasure_card.Equipment;
 
 import java.util.ArrayList;
+<<<<<<< Upstream, based on origin/master
 import java.util.List;
 import java.util.ListIterator;
+=======
+import java.util.*;
+
+
+>>>>>>> 1450676 commit Fight et phase Dungeon.
 
 public class Player
 <<<<<<< Upstream, based on origin/master
@@ -34,8 +40,6 @@ public class Player
 	private int level;
 	
 	private String race;
-	
-	private int idPlayer;
 	
 	private int idPlayer;
 	
@@ -70,9 +74,27 @@ public class Player
 	 * 
 	 * @return
 	 */
-	public Card ChooseCardToPut()
+	public Card chooseCardToPut()
 	{
+		System.out.println("Veuillez sélectionner la carte à poser (nomCarte)");
+		String card;
+		Scanner sc1 = new Scanner(System.in);
+		card = sc1.nextLine();
+		sc1.close();
+		card.toUpperCase();
+		for (int j = 0; j < this.getHand().getNbMaxCard(); j++)
+		{
+			if (this.getHand().getHandPlayer().get(j).getName() == card)
+			{
+				return this.getHand().getHandPlayer().get(j);
+			}
+		}	
 		return null;
+	}
+	
+	public void putCard(Card card)
+	{
+		
 	}
 	
 	/**
@@ -263,7 +285,5 @@ public class Player
 		{
 				this.playerEquipment = playerEquipment;
 		}
-	 
-	
 }
 >>>>>>> 59291a6 commit share 08/06/2015 11:53
