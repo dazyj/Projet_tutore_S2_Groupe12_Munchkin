@@ -1,24 +1,17 @@
 package global;
 <<<<<<< Upstream, based on origin/master
+<<<<<<< Upstream, based on origin/master
 
 =======
 <<<<<<< Upstream, based on origin/master
 >>>>>>> 1a6d86b update commit précédent
+=======
+>>>>>>> 9199ff2 Last Update
 import global.card.Card;
 import global.card.dungeon_card.enumeration.RaceSpecification;
 import global.card.treasure_card.Equipment;
 
 import java.util.ArrayList;
-=======
-
-import global.*;
-import global.card.*;
-import global.card.dungeon_card.*;
-import global.card.dungeon_card.enumeration.*;
-import global.card.treasure_card.*;
-import global.card.treasure_card.enumeration.*;
-
->>>>>>> 73eec89 update commit précédent
 import java.util.List;
 import java.util.ListIterator;
 
@@ -42,15 +35,11 @@ public class Player
 	
 	private String race;
 	
-<<<<<<< Upstream, based on origin/master
-	private List<Equipment> playerEquipment;
-=======
 	private int idPlayer;
 	
-	private List<Equipment> playerEquipment = new List<Equipment>();
-		{
-		};
->>>>>>> 5cb7b61 commit share 08/06/2015 11:53
+	private int idPlayer;
+	
+	private List<Equipment> playerEquipment;
 	
 	
 	/**
@@ -101,17 +90,7 @@ public class Player
 	 * 
 	 * @param heap
 	 */
-	public void sendCardHand(Heap heap)
-	{
-		
-	}
-	
-	/**
-	 * The method that send a card from anywhere to the hand of the player.
-	 * 
-	 * @param heap
-	 */
-	public void sendCardHandFromAnywhere(Card card)
+	public void sendCardHAnd(Heap heap)
 	{
 		
 	}
@@ -121,7 +100,7 @@ public class Player
 	 * 
 	 * @param heap
 	 */
-	public Card sendCardTable(Heap heap)
+	public void sendCardTable(Heap heap)
 	{
 		
 	}
@@ -224,6 +203,7 @@ public class Player
 =======
 		}
 <<<<<<< Upstream, based on origin/master
+<<<<<<< Upstream, based on origin/master
 >>>>>>> 59291a6 commit share 08/06/2015 11:53
 
 		public List<Equipment> getPlayerEquipment()
@@ -261,6 +241,8 @@ public class Player
 				this.playerEquipment = playerEquipment;
 		}
 =======
+=======
+>>>>>>> 9199ff2 Last Update
 	
 	public int getId()
 	{
@@ -271,7 +253,16 @@ public class Player
 	{
 		this.idPlayer = i;
 	}
->>>>>>> 5cb7b61 commit share 08/06/2015 11:53
+
+	public List<Equipment> getPlayerEquipment()
+		{
+				return playerEquipment;
+		}
+
+	public void setPlayerEquipment(List<Equipment> playerEquipment)
+		{
+				this.playerEquipment = playerEquipment;
+		}
 	 
 	
 }
