@@ -1,10 +1,24 @@
 package global;
+<<<<<<< Upstream, based on origin/master
 
+=======
+<<<<<<< Upstream, based on origin/master
+>>>>>>> 1a6d86b update commit précédent
 import global.card.Card;
 import global.card.dungeon_card.enumeration.RaceSpecification;
 import global.card.treasure_card.Equipment;
 
 import java.util.ArrayList;
+=======
+
+import global.*;
+import global.card.*;
+import global.card.dungeon_card.*;
+import global.card.dungeon_card.enumeration.*;
+import global.card.treasure_card.*;
+import global.card.treasure_card.enumeration.*;
+
+>>>>>>> 73eec89 update commit précédent
 import java.util.List;
 import java.util.ListIterator;
 

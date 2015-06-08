@@ -1,8 +1,11 @@
 package global;
 
-import global.Munchkin;
+import global.*;
 import global.card.*;
 import global.card.dungeon_card.*;
+import global.card.dungeon_card.enumeration.*;
+import global.card.treasure_card.*;
+import global.card.treasure_card.enumeration.*;
 
 public class PhaseDungeonCard1
 	{

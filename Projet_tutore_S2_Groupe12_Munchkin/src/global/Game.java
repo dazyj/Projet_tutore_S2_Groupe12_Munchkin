@@ -1,5 +1,12 @@
 package global;
 
+import global.*;
+import global.card.*;
+import global.card.dungeon_card.*;
+import global.card.dungeon_card.enumeration.*;
+import global.card.treasure_card.*;
+import global.card.treasure_card.enumeration.*;
+
 public class Game 
 {
 	/**
@@ -152,7 +159,7 @@ public class Game
 		return this.Treasure;
 	}
 	
-	public FightTab Fight()
+	public FightTab Fight(Monster)
 	{
 		
 	}
