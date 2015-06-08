@@ -14,7 +14,6 @@ public class ConsumableItem extends TreasureCard
 		/**
 		 * name of the card
 		 */
-		private final String name;
 		
 		private final int bonus;
 
@@ -22,9 +21,8 @@ public class ConsumableItem extends TreasureCard
 
 		public ConsumableItem(ConsumableItemSpecification name)
 			{
-				super();
+				super(name.getName());
 				this.category = TreasureCardCategory.item.getName();
-				this.name = name.getName();
 				this.bonus = name.getBonus();
 			}
 
@@ -33,10 +31,6 @@ public class ConsumableItem extends TreasureCard
 					return this.category;
 			}
 
-		public String getName()
-			{
-					return this.name;
-			}
 
 		public int getBonus()
 			{

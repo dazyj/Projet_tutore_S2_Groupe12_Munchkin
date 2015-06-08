@@ -11,13 +11,15 @@ package global.card;
  */
 public abstract class DungeonCard extends Card
 	{
+		
 		private final CardType type;
 
-		public DungeonCard()
+		public DungeonCard(String name)
 			{
-				super();
+				super(name);
 				this.type = CardType.Dungeon;
 			}
+
 
 		public CardType getType()
 			{

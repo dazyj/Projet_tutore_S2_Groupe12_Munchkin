@@ -2,33 +2,25 @@ package global.card.dungeon_card;
 
 import global.card.DungeonCard;
 import global.card.dungeon_card.enumeration.DungeonCardCategory;
+import global.card.dungeon_card.enumeration.JobSpecification;
 
 
 
 public class Job extends DungeonCard
 	{
 		/**
-		 * name of the card
-		 */
-		private final String name;
-		/**
 		 * category of this card
 		 */
-		private final DungeonCardCategory category;
+		private final String category;
 
-		public Job(String name, DungeonCardCategory category)
+		public Job(JobSpecification name)
 			{
-				super();
-				this.name = name;
-				this.category = category;
+				super(name.getName());
+				this.category = DungeonCardCategory.job.getName();
 			}
 
-		public String getName()
-			{
-				return name;
-			}
 
-		public DungeonCardCategory getCategory()
+		public String getCategory()
 			{
 				return category;
 			}

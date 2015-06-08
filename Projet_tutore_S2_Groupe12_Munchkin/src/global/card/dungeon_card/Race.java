@@ -3,9 +3,7 @@ package global.card.dungeon_card;
 import global.card.Card;
 import global.card.DungeonCard;
 import global.card.dungeon_card.enumeration.DungeonCardCategory;
-
-
-
+import global.card.dungeon_card.enumeration.RaceSpecification;
 
 /**
  * {@link Race} is a race for a player.
@@ -16,34 +14,24 @@ import global.card.dungeon_card.enumeration.DungeonCardCategory;
 public class Race extends DungeonCard
 	{
 		/**
-		 * name of the {@link Card}
-		 */
-		private final String name;
-		/**
 		 * category of this {@link Card}
 		 */
-		private final DungeonCardCategory category;
+		private final String category;
 
-		public Race(String name)
+		public Race(RaceSpecification specification)
 			{
-				super();
-				this.category = DungeonCardCategory.race;
-				this.name = name;
+				super(specification.getName());
+				this.category = DungeonCardCategory.race.getName();
 			}
-		
-		public void power ( String name)
-		{
+
+		public void power(String name)
+			{
 			
-		}
-
-		public DungeonCardCategory getCategory()
-			{
-				return category;
 			}
 
-		public String getName()
+		public String getCategory()
 			{
-				return name;
+				return this.category;
 			}
 
 	}

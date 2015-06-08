@@ -8,7 +8,6 @@ import global.card.dungeon_card.enumeration.DungeonCardCategory;
 
 public class CardCurse extends DungeonCard
 	{
-		private final String name;
 		
 		private final DungeonCardCategory category;
 		
@@ -17,8 +16,7 @@ public class CardCurse extends DungeonCard
 
 		public CardCurse(CardCurseSpecification name)
 			{
-				super();
-				this.name = name.getName();
+				super(name.getName());
 				this.category = DungeonCardCategory.card_curse;
 				this.numberCardRemove = name.getNumberCardRemove();
 			}
@@ -28,11 +26,6 @@ public class CardCurse extends DungeonCard
 			
 			
 		}
-
-		public String getName()
-			{
-					return this.name;
-			}
 
 		public DungeonCardCategory getCategory()
 			{

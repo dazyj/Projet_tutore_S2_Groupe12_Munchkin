@@ -20,9 +20,9 @@ public abstract class TreasureCard extends Card
 		 * 
 		 * @param name
 		 */
-		public TreasureCard()
+		public TreasureCard(String name)
 			{
-				super();
+				super(name);
 				this.type = CardType.Treasure;
 			}
 

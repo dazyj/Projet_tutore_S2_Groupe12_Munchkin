@@ -4,13 +4,10 @@ import global.card.DungeonCard;
 import global.card.dungeon_card.enumeration.DungeonCardCategory;
 import global.card.dungeon_card.enumeration.MonsterCurseSpecification;
 
-
-
 public class MonsterCurse extends DungeonCard
 	{
-		private final String name;
 
-		private DungeonCardCategory category;
+		private final String category;
 
 		private final int monsterLevelEffect;
 
@@ -18,26 +15,15 @@ public class MonsterCurse extends DungeonCard
 
 		public MonsterCurse(MonsterCurseSpecification Specification)
 			{
-				super();
-				this.name = Specification.getName();
-				this.category = DungeonCardCategory.monster_curse;
+				super(Specification.getName());
+				this.category = DungeonCardCategory.monster_curse.getName();
 				this.monsterLevelEffect = Specification.getMonsterLevelEffect();
 				this.treasureCardEffect = Specification.getTreasureCardEffect();
 			}
 
-		public String getName()
+		public String getCategory()
 			{
-				return this.name;
-			}
-
-		public DungeonCardCategory getCategory()
-			{
-				return category;
-			}
-
-		public void setCategory(DungeonCardCategory category)
-			{
-				this.category = category;
+				return this.category;
 			}
 
 		public int getMonsterLevelEffect()
@@ -49,8 +35,10 @@ public class MonsterCurse extends DungeonCard
 			{
 				return treasureCardEffect;
 			}
+
 		/**
 		 * this card can be change the level monster for a fight and gain.
+		 * 
 		 * @param monster
 		 */
 		public void useCurse(Monster monster)
