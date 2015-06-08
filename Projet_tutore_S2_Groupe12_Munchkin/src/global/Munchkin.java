@@ -11,6 +11,10 @@ public class Munchkin
 	 */
 	private static int nbPlayer;
 	
+	private static Player[] tabOfPlayers;
+	
+	private static Game gameOfMunchkin;
+	
 	public static void main(String[] args)
 	{
 		System.out.println("Bienvenue dans le Munchkin, nous allons procéder à la création d'une nouvelle partie.");
@@ -25,7 +29,6 @@ public class Munchkin
 	*/
 	public static void createGame()
 	{
-		Player[] tabOfPlayers = null;
 		tabOfPlayers = new Player[Munchkin.nbPlayer];
 		
 		for (int i = 0; i < Munchkin.nbPlayer; i++)
@@ -35,13 +38,22 @@ public class Munchkin
 			tabOfPlayers[i].asertId(i);
 		}
 		
-		Game gameOfMunchkin = new Game();
 		gameOfMunchkin.start();
 	}
 	
 	public static int getNbPlayer()
 	{
 		return nbPlayer;
+	}
+	
+	public static Player[] getTabOfPlayers()
+	{
+		return tabOfPlayers;
+	}
+	
+	public static Game getGameOfMunchkin()
+	{
+		return gameOfMunchkin;
 	}
 
 

@@ -87,7 +87,17 @@ public class Player
 	 * 
 	 * @param heap
 	 */
-	public void sendCardHAnd(Heap heap)
+	public void sendCardHand(Heap heap)
+	{
+		
+	}
+	
+	/**
+	 * The method that send a card from anywhere to the hand of the player.
+	 * 
+	 * @param heap
+	 */
+	public void sendCardHandFromAnywhere(Card card)
 	{
 		
 	}
@@ -97,7 +107,7 @@ public class Player
 	 * 
 	 * @param heap
 	 */
-	public void sendCardTable(Heap heap)
+	public Card sendCardTable(Heap heap)
 	{
 		
 	}

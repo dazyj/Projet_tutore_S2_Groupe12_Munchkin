@@ -8,6 +8,10 @@ public class Game
 	 */
 	private Phase gamePhase;
 	
+	private Heap Dungeon;
+	
+	private Heap Treasure;
+	
 	/**
 	 * Create an object of type Game.
 	 */
@@ -134,6 +138,21 @@ public class Game
 	 * Initialize the game.
 	 */
 	public void initialize()
+	{
+		
+	}
+	
+	public Heap getDungeonHeap()
+	{
+		return this.Dungeon;
+	}
+	
+	public Heap getTreasureHeap()
+	{
+		return this.Treasure;
+	}
+	
+	public FightTab Fight()
 	{
 		
 	}
