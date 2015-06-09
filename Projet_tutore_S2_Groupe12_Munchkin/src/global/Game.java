@@ -378,7 +378,7 @@ public class Game
 		 * @param player
 		 * @return
 		 */
-		public int CalculateGainPlayer(int monsterGain, Player player)
+		public int calculateGainPlayer(int monsterGain, Player player)
 		{
 			if(player.getRace().getName() == "Elf")
 				return (monsterGain - (monsterGain/2)) + 1;
@@ -389,11 +389,11 @@ public class Game
 		 * @param player
 		 * @return
 		 */
-		public boolean TryFlee (Player player)
+		public boolean tryFlee(Player player)
 		{
 			Random thimble = new Random();
 			int thimbledodge = thimble.nextInt(6) + 1;
-			if(player.getRace().getName() == "Priest")
+			if(player.getJob().getName() == "Priest")
 				{
 				thimbledodge += 1;
 				}

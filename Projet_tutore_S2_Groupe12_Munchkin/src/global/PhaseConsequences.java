@@ -35,12 +35,12 @@ public class PhaseConsequences
 				}
 				else
 				{
-					int GainLevelPlayer = Munchkin.getGameOfMunchkin().CalculateGainPlayer(FightTab.readMonster().getLevelGain(), tabOfPlayers[Move.getIdPlayersMove()]);
-					int GainCardPlayer = Munchkin.getGameOfMunchkin().CalculateGainPlayer(FightTab.readMonster().getTreasureGain(),tabOfPlayers[Move.getIdPlayersMove()]);
+					int GainLevelPlayer = Munchkin.getGameOfMunchkin().calculateGainPlayer(FightTab.readMonster().getLevelGain(), tabOfPlayers[Move.getIdPlayersMove()]);
+					int GainCardPlayer = Munchkin.getGameOfMunchkin().calculateGainPlayer(FightTab.readMonster().getTreasureGain(),tabOfPlayers[Move.getIdPlayersMove()]);
 					System.out.println("vous avez gagnez le combat avec "+FightTab.readHelper().getPseudo() +" !");
 					System.out.println("vous gagnez "+GainCardPlayer+"trésors et "+GainLevelPlayer+"level");
-					tabOfPlayers[Move.getIdPlayersMove()].updateLevel(Munchkin.getGameOfMunchkin().CalculateGainPlayer(FightTab.readMonster().getLevelGain(), tabOfPlayers[Move.getIdPlayersMove()]));
-					for (int numberCardForPlayer = 0; numberCardForPlayer <= Munchkin.getGameOfMunchkin().CalculateGainPlayer(FightTab.readMonster().getTreasureGain(),tabOfPlayers[Move.getIdPlayersMove()]); numberCardForPlayer++)
+					tabOfPlayers[Move.getIdPlayersMove()].updateLevel(Munchkin.getGameOfMunchkin().calculateGainPlayer(FightTab.readMonster().getLevelGain(), tabOfPlayers[Move.getIdPlayersMove()]));
+					for (int numberCardForPlayer = 0; numberCardForPlayer <= Munchkin.getGameOfMunchkin().calculateGainPlayer(FightTab.readMonster().getTreasureGain(),tabOfPlayers[Move.getIdPlayersMove()]); numberCardForPlayer++)
 					{
 						tabOfPlayers[Move.getIdPlayersMove()].sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
 					}
@@ -57,7 +57,7 @@ public class PhaseConsequences
 			else
 			{
 				System.out.println("vous tentez de fuir !");
-				if(Munchkin.getGameOfMunchkin().TryFlee(tabOfPlayers[Move.getIdPlayersMove()]))
+				if(Munchkin.getGameOfMunchkin().tryFlee(tabOfPlayers[Move.getIdPlayersMove()]))
 				{
 					System.out.println("vous avez réussis à fuir !");
 				}
@@ -77,7 +77,7 @@ public class PhaseConsequences
 				}
 				if(FightTab.readHelper() != null)
 				{
-					if(Munchkin.getGameOfMunchkin().TryFlee(FightTab.readHelper()))
+					if(Munchkin.getGameOfMunchkin().tryFlee(FightTab.readHelper()))
 					{
 						System.out.println(FightTab.readHelper().getPseudo()+" réussis à fuir !");
 					}
