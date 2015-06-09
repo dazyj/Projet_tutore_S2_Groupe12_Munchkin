@@ -22,8 +22,8 @@ public class Munchkin
 	public static void main(String[] args)
 	{
 		System.out.println("Bienvenue dans le Munchkin, nous allons procéder à la création d'une nouvelle partie.");
-		Monster bailiff = new Monster(MonsterSpecification.bailiff);
-		System.out.println(bailiff.toString());
+		System.out.println("Selectionner le nombre joueur");
+		
 		
 		
 	}

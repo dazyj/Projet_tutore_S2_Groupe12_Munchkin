@@ -77,7 +77,7 @@ public class Monster extends DungeonCard
 		public String toString()
 		{
 			String ch = "";
-			return ch = ch + " [" +this.category + "] : " +this.getName() + "("+this.level+") [Treasure Gain : " +this.treasureGain+", LevelGain : "+this.levelGain+"]";
+			if ()return ch = ch + " [" +this.category + "] : " +this.getName() + "("+this.level+") [Treasure Gain : " +this.treasureGain+", LevelGain : "+this.levelGain+"]";
 		
 		}
 	}

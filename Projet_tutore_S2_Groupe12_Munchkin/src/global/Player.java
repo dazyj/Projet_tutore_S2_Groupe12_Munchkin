@@ -66,17 +66,13 @@ public class Player
 					{
 						if (iterator.next().getName() == name)
 							{
-								return iterator.previous();
+								return this.hand.getHandPlayer().remove(iterator.previousIndex());
 							}
 					}
 				return null;
 
 			}
 
-		public void putCard(Card card)
-			{
-
-			}
 
 		/**
 		 * The method that send a card from the heap to the hand of the player.
@@ -98,10 +94,11 @@ public class Player
 		 * 
 		 * @param indexCard
 		 */
-		public void discard(int indexCard)
+		public Card discard(int indexCard)
 			{
-				this.hand.getHandPlayer().remove(indexCard);
+				return this.hand.getHandPlayer().remove(indexCard);
 			}
+		
 
 	
 
@@ -147,12 +144,21 @@ public class Player
 										Equipment currentCarte = (Equipment)this.hand.getHandPlayer().get(iterator.previousIndex());
 										this.playerEquipment.getEquipment().add(currentCarte);	
 										this.playerEquipment.setBonusTotal(this.playerEquipment.getBonusTotal() + currentCarte.getBonus());
+										this.updateStrength(currentCarte.getBonus());
 										return;
 									}
 
 							}
 					}
 			}
+		/**
+		 * update the Strenght of the player when he equip or sell his item.
+		 * @param StrengthEffect
+		 */
+		public void updateStrength(int strengthEffect)
+		{
+			this.setStrength(this.getStrength() + strengthEffect);
+		}
 
 		/**
 		 * this method search a {@link Card} with a name, and sell it against the money
@@ -168,8 +174,9 @@ public class Player
 					{
 						if (iterator.next().getName() == name)
 							{
+								Equipment currentCard = (Equipment)this.hand.getHandPlayer().get(iterator.previousIndex());
 								this.money += +iterator.previous().getValue();
-
+								this.updateStrength(-currentCard.getBonus());
 								if (this.money >= 1000)
 									{
 										this.level += 1;

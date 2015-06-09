@@ -19,7 +19,7 @@ public abstract class Card
 		public Card(String name)
 			{
 				this.name = name;
-				this.setHiddenFace(false);
+				this.hiddenFace = false;
 			}
 
 		public boolean getHiddenFace()
