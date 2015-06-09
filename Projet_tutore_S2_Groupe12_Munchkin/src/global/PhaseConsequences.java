@@ -18,31 +18,40 @@ public class PhaseConsequences
 				Player[] tabOfPlayers = Munchkin.getTabOfPlayers();
 				if (PhaseDungeonCard1.isToFight())
 					{
-						if(FightTab.readIsWin())
+						if (FightTab.readIsWin())
 							{
-								System.out.println("vous avez gagnez :"+ FightTab.readMonster().getTreasureGain() +"trésors.");
-								for(int numberTreasure = 0; numberTreasure < FightTab.readMonster().getTreasureGain(); numberTreasure++)
+								System.out
+										.println("vous avez gagnez :"+ FightTab.readMonster().getTreasureGain()+ "trésors.");
+								for (int numberTreasure = 0; numberTreasure < FightTab.readMonster().getTreasureGain(); numberTreasure++)
 									{
 										tabOfPlayers[Move.getIdPlayersMove()].sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
 									}
-								if(FightTab.readMonster().getLevelGain() != 0)
+								if (FightTab.readMonster().getLevelGain() != 0)
 									{
-										System.out.println("vous avez gagnez " + FightTab.readMonster().getLevelGain() +"niveaux");
+										System.out.println("vous avez gagnez "+ FightTab.readMonster().getLevelGain()+ "niveaux");
 										tabOfPlayers[Move.getIdPlayersMove()].updateLevel(FightTab.readMonster().getLevelGain());
 									}
-							}
-						else
+							} else
 							{
-								System.out.println("vous tentez de fuir ! /n");
+								System.out.println("vous tentez de fuir !");
 								Random thimble = new Random();
-								int nombre =
-								
+								int thimbledodge = thimble.nextInt(6) + 1;
+								if (thimbledodge >= 5)
+									{
+										System.out.println("vous arriver a fuir !");
+									} 
+								else
+									{
+										System.out.println("le monstre vous rattrape et vous cogne !");
+										if(tabOfPlayers[Move.getIdPlayersMove()].getLevel() <= 2)
+											{
+												System.out.println("vous êtes mort !");
+												Munchkin.getGameOfMunchkin().deathPlayer(tabOfPlayers[Move.getIdPlayersMove()]);
+											}
+									}
+
 							}
-						
-						
-						
-						
-						
+
 					}
 			}
 	}

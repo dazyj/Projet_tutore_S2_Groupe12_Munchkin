@@ -330,4 +330,20 @@ public class Game
 				Players = players;
 			}
 		
-	}
+		public void deathPlayer(Player playerdeath)
+			{
+				while (!playerdeath.getHand().getHandPlayer().isEmpty())
+					{
+						for (int indexNbPlayer = 0; indexNbPlayer < Munchkin.getNbPlayer(); indexNbPlayer++)
+							{
+								if (indexNbPlayer == Move.getIdPlayersMove())
+									{
+										playerdeath.getHand().getHandPlayer().remove(0);
+									}
+							}
+					}
+				playerdeath.setLevel(1);
+		
+			}
+		
+}
