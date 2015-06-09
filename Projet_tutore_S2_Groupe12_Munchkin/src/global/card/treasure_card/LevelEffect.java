@@ -45,7 +45,7 @@ public class LevelEffect extends TreasureCard
 		public void effect(Player player, Player targetPlayer)
 			{
 				player.setLevel(player.getLevel() + this.LevelNumberUp);
-				if(targetPlayer.getLevel() < 1)
+				if(targetPlayer.getLevel() > 1)
 					{
 						targetPlayer.setLevel(targetPlayer.getLevel() - this.levelNumberLess);
 					}

@@ -26,7 +26,7 @@ public class Race extends DungeonCard
 
 		public void power(String name)
 			{
-			
+				
 			}
 
 		public String getCategory()

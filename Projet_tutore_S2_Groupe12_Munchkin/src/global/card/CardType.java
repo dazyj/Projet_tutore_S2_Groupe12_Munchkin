@@ -9,9 +9,22 @@ public enum CardType
 		/**
 		 * first type of card
 		 */
-		Treasure,
+		treasure("Treasure"),
 		/**
 		 * secondly type of card
 		 */
-		Dungeon;
+		dungeon("Dungeon");
+		
+		private final String type;
+		
+		private CardType(String cardType)
+		{
+			this.type = cardType;
+		}
+
+		public String getType()
+			{
+					return type;
+			}
+		
 	}

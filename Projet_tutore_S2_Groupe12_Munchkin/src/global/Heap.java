@@ -7,14 +7,24 @@ import global.card.dungeon_card.enumeration.*;
 import global.card.treasure_card.*;
 import global.card.treasure_card.enumeration.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Heap
+public class Heap 
 	{
 		/**
 		 * The number of cards in the heap.
 		 */
 		private List<Card> deck;
+		
+		private final String cardType;
+		
+		public Heap(CardType type)
+		{
+			this.cardType = type.getType();
+			this.deck = new ArrayList<Card>();
+
+		}
 
 		public List<Card> getDeck()
 			{
@@ -45,6 +55,11 @@ public class Heap
 					}
 				return cardsRemove;
 
+			}
+
+		public String getCardType()
+			{
+					return this.cardType;
 			}
 
 	}

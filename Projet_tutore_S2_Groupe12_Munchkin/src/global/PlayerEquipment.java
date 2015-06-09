@@ -14,10 +14,13 @@ import global.card.treasure_card.*;
 public class PlayerEquipment
 	{
 		private List<Equipment> playerEquipement;
-
+		
+		private int bonusTotal;
+		
 		public PlayerEquipment()
 			{
 				this.playerEquipement = new ArrayList<Equipment>();
+				this.setBonusTotal(0);
 			}
 
 		public List<Equipment> getEquipment()
@@ -25,17 +28,15 @@ public class PlayerEquipment
 				return playerEquipement;
 			}
 
-		public void DeleteEquipment(String name)
+		public int getBonusTotal()
 			{
-				ListIterator<Equipment> iterator = this.playerEquipement
-						.listIterator();
-				while (iterator.hasNext())
-					{
-						if (iterator.next().getName() == name)
-							{
-								iterator.remove();
-								return;
-							}
-					}
+					return bonusTotal;
 			}
+
+		public void setBonusTotal(int bonusTotal)
+			{
+					this.bonusTotal = bonusTotal;
+			}
+
+
 	}

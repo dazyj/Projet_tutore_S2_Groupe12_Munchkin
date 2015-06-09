@@ -23,7 +23,7 @@ public abstract class TreasureCard extends Card
 		public TreasureCard(String name)
 			{
 				super(name);
-				this.type = CardType.Treasure;
+				this.type = CardType.treasure;
 			}
 
 		public CardType getType()
