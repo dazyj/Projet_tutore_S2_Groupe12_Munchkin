@@ -9,11 +9,11 @@ public enum CardType
 		/**
 		 * first type of card
 		 */
-		treasure("Treasure"),
+		treasure("Treasure card"),
 		/**
 		 * secondly type of card
 		 */
-		dungeon("Dungeon");
+		dungeon("Dungeon card");
 		
 		private final String type;
 		

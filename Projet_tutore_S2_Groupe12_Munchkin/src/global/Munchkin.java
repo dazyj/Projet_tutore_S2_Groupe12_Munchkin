@@ -22,10 +22,14 @@ public class Munchkin
 	public static void main(String[] args)
 	{
 		System.out.println("Bienvenue dans le Munchkin, nous allons procéder à la création d'une nouvelle partie.");
-		System.out.println("Selectionner le nombre joueur");
+		Monster Monstre1 = new Monster(MonsterSpecification.bailiff);
+		Monstre1.setHiddenFace(true);
+		System.out.println(Monstre1.toString());
+		Monstre1.setHiddenFace(false);
+		System.out.println(Monstre1.toString());
 		
-		
-		
+		System.out.println("PHASE CONSEQUENCE");
+		if()
 	}
 
 	/**

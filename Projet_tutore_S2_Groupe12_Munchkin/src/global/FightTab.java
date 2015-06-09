@@ -10,38 +10,50 @@ import global.card.treasure_card.enumeration.*;
 public class FightTab
 	{
 		private static Player player;
-		
+
 		private static Player helper;
-		
+
 		private static Monster monster;
-		
+
+		private static boolean isWin;
+
 		public static void editPlayer(Player pPlayer)
-		{
-			player = pPlayer;
-		}
-		
+			{
+				player = pPlayer;
+			}
+
 		public static void editHelper(Player pHelper)
-		{
-			helper = pHelper;
-		}
-		
+			{
+				helper = pHelper;
+			}
+
 		public static void editMonster(Monster pMonster)
-		{
-			monster = pMonster;
-		}
-		
+			{
+				monster = pMonster;
+			}
+
 		public static Player readPlayer()
-		{
-			return player;
-		}
-		
+			{
+				return player;
+			}
+
 		public static Player readHelper()
-		{
-			return helper;
-		}
-			
+			{
+				return helper;
+			}
+
 		public static Monster readMonster()
+			{
+				return monster;
+			}
+
+		public static boolean readIsWin()
+			{
+				return isWin;
+			}
+		public static boolean editIsWin(boolean win)
 		{
-			return monster;
+			return isWin = win;
 		}
+
 	}

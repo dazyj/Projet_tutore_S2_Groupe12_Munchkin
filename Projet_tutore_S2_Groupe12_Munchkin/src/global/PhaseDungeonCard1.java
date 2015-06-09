@@ -11,11 +11,13 @@ import global.card.treasure_card.enumeration.*;
 
 public class PhaseDungeonCard1
 	{
+		private static boolean toFight ;
+		
+		
 		public static void start()
 			{
 				Player[] tabOfPlayers = Munchkin.getTabOfPlayers();
-				Card firstCardDungeon = (Card) Munchkin.getGameOfMunchkin()
-						.getDungeonHeap().RemoveFirstCard();
+				Card firstCardDungeon = (Card) Munchkin.getGameOfMunchkin().getDungeonHeap().RemoveFirstCard();
 				firstCardDungeon.setHiddenFace(false);
 				// TODO Afficher la carte
 				if (firstCardDungeon instanceof Monster)
@@ -40,5 +42,17 @@ public class PhaseDungeonCard1
 						
 					}
 
+			}
+
+
+		public static boolean isToFight()
+			{
+					return toFight;
+			}
+
+
+		public static void setToFight(boolean toFight)
+			{
+					PhaseDungeonCard1.toFight = toFight;
 			}
 	}

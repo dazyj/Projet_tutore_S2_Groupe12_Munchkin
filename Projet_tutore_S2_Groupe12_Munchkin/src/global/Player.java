@@ -81,8 +81,6 @@ public class Player
 		 */
 		public void sendCardHAnd(Card card)
 			{
-				if (this.hand.getHandPlayer().size() < this.hand
-						.getMaximumNumberCard())
 					{
 						this.hand.getHandPlayer().add(card);
 					}
@@ -98,19 +96,6 @@ public class Player
 			{
 				return this.hand.getHandPlayer().remove(indexCard);
 			}
-		
-
-	
-
-		/**
-		 * The method that return the card that the player want to put.
-		 * 
-		 * @return
-		 */
-		public Card ChooseCardToPut(String name)
-			{
-				return null;
-			}
 
 		/**
 		 * The method that send a card from the heap to the hand of the player.
@@ -125,6 +110,10 @@ public class Player
 						this.hand.getHandPlayer().add(heap.RemoveFirstCard());
 					}
 			}
+		public void updateLevel(int numberLevelChange)
+		{
+			this.level = (this.level + numberLevelChange);
+		}
 		
 /**
  * this method can be search a card in the {@link HandPlayer}, move in the {@link PlayerEquipment}.

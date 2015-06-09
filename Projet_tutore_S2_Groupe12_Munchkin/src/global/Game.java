@@ -16,7 +16,7 @@ public class Game
 		 * player is.
 		 */
 		private Player[] Players;
-		
+
 		private PhaseSpecification gamePhase;
 
 		private Heap Dungeon;
@@ -56,16 +56,17 @@ public class Game
 					numPhaseFromGamePhase = 1;
 				else
 					numPhaseFromGamePhase++;
-				this.gamePhase = PhaseSpecification.phaseFromNumPhase(numPhaseFromGamePhase);
+				this.gamePhase = PhaseSpecification
+						.phaseFromNumPhase(numPhaseFromGamePhase);
 				this.gamePhase.isNotFinished();
 				switch (this.gamePhase)
 					{
-					case DUNGEON_CARD_1:
-						PhaseDungeonCard1.start();
-					case CONSEQUENCES:
-						PhaseConsequences.start();
-					case PERSONAL_PHASE:
-						PhasePersonnalPhase.start();
+						case DUNGEON_CARD_1:
+							PhaseDungeonCard1.start();
+						case CONSEQUENCES:
+							PhaseConsequences.start();
+						case PERSONAL_PHASE:
+							PhasePersonnalPhase.start();
 					}
 			}
 
@@ -82,7 +83,7 @@ public class Game
 		 */
 		public void start()
 			{
-				
+
 			}
 
 		/**
@@ -182,20 +183,6 @@ public class Game
 
 		public FightTab fight(Monster monster)
 			{
-				// TODO enlever tous les scanner et Sysout.
-				// TODO diviser la méthode en plusieurs,
-				// exemple : phase 1(méthode) initialisation combat: tour de
-				// table s'il
-				// veut utiliser une MonsterCurse ou un itemConsumable Sous
-				// methode d'effet a faire dans les classe itemConsumable et
-				// VusreMonster.
-				// phase 2: demande si le joueur acitfs veut de l'aide,
-				// Selection par le nom,z
-				// 
-				//
-				//
-				//
-				//
 				System.out.println("Le Combat commence.");
 				FightTab.editPlayer(this.identifyPlayerById(Move
 						.getIdPlayersMove()));
@@ -218,43 +205,44 @@ public class Game
 								answer.toUpperCase();
 								switch (answer)
 									{
-									case "OUI":
-										Card card = Munchkin.getTabOfPlayers()[i]
-												.chooseCardToPut();
-										if (card instanceof ConsumableItem)
-											{
-												ConsumableItem itemCard = (ConsumableItem) card;
-												Munchkin.getTabOfPlayers()[i]
-														.putCard(card);
-												FightTab.readMonster()
-														.setLevel(
-																FightTab.readMonster()
-																		.getLevel()
-																		+ itemCard
-																				.getBonus());
-											}
-										if (card instanceof MonsterCurse)
-											{
-												MonsterCurse monsterCurseCard = (MonsterCurse) card;
-												Munchkin.getTabOfPlayers()[i]
-														.putCard(card);
-												FightTab.readMonster()
-														.setLevel(
-																FightTab.readMonster()
-																		.getLevel()
-																		+ monsterCurseCard
-																				.getMonsterLevelEffect());
-												FightTab.readMonster()
-														.setTreasureGain(
-																FightTab.readMonster()
-																		.getTreasureGain()
-																		+ monsterCurseCard
-																				.getTreasureCardEffect());
-											}
-										// TODO Afficher Monstre
-										compare = "OUI".compareTo(answer);
-									case "NON":
-										compare = "OUI".compareTo(answer);
+										case "OUI":
+											Card card = Munchkin
+													.getTabOfPlayers()[i]
+													.chooseCardToPut();
+											if (card instanceof ConsumableItem)
+												{
+													ConsumableItem itemCard = (ConsumableItem) card;
+													Munchkin.getTabOfPlayers()[i]
+															.putCard(card);
+													FightTab.readMonster()
+															.setLevel(
+																	FightTab.readMonster()
+																			.getLevel()
+																			+ itemCard
+																					.getBonus());
+												}
+											if (card instanceof MonsterCurse)
+												{
+													MonsterCurse monsterCurseCard = (MonsterCurse) card;
+													Munchkin.getTabOfPlayers()[i]
+															.putCard(card);
+													FightTab.readMonster()
+															.setLevel(
+																	FightTab.readMonster()
+																			.getLevel()
+																			+ monsterCurseCard
+																					.getMonsterLevelEffect());
+													FightTab.readMonster()
+															.setTreasureGain(
+																	FightTab.readMonster()
+																			.getTreasureGain()
+																			+ monsterCurseCard
+																					.getTreasureCardEffect());
+												}
+											// TODO Afficher Monstre
+											compare = "OUI".compareTo(answer);
+										case "NON":
+											compare = "OUI".compareTo(answer);
 									}
 							}
 					}
@@ -266,108 +254,116 @@ public class Game
 				help.toUpperCase();
 				switch (help)
 					{
-					case "OUI":
-						System.out
-								.println("Indiquez le pseudo du joueur concerné.");
-						sc1 = new Scanner(System.in);
-						String nickname;
-						nickname = sc1.nextLine();
-						nickname.toUpperCase();
-						sc1.close();
-						for (int i = 0; i < Munchkin.getNbPlayer(); i++)
-							{
-								if (nickname == Munchkin.getTabOfPlayers()[i]
-										.getPseudo().toUpperCase())
-									FightTab.editHelper(Munchkin
-											.getTabOfPlayers()[i]);
-							}
-						Player playerOfTheFight = FightTab.readPlayer();
-						Player helperOfTheFight = FightTab.readHelper();
-						String answer = "OUI";
-						int compare = "OUI".compareTo(answer);
-						while (compare == 0)
-							{
-								System.out
-										.println(FightTab.readPlayer()
-												.getPseudo()
-												+ ", Voulez-vous rajouter des bonus à vos dégâts ?");
-								answer = sc1.nextLine();
-								sc1.close();
-								answer.toUpperCase();
-								switch (answer)
-									{
-									case "OUI":
-										Card card = FightTab.readPlayer()
-												.chooseCardToPut();
-										if (card instanceof ConsumableItem)
-											{
-												ConsumableItem itemCard = (ConsumableItem) card;
-												FightTab.readPlayer().putCard(
-														card);
-												FightTab.readPlayer()
-														.setStrength(
-																FightTab.readPlayer()
-																		.getStrength()
-																		+ itemCard
-																				.getBonus());
-											}
-										// TODO Bonus de Job/Race
-										// TODO Afficher Player
-										compare = "OUI".compareTo(answer);
-									case "NON":
-										compare = "OUI".compareTo(answer);
-									}
-							}
-						answer = "OUI";
-						compare = "OUI".compareTo(answer);
-						while (compare == 0)
-							{
-								System.out
-										.println(FightTab.readHelper()
-												.getPseudo()
-												+ ", voulez-vous rajouter des bonus à vos dégâts ?");
-								answer = sc1.nextLine();
-								sc1.close();
-								answer.toUpperCase();
-								switch (answer)
-									{
-									case "OUI":
-										Card card = FightTab.readHelper()
-												.chooseCardToPut();
-										if (card instanceof ConsumableItem)
-											{
-												ConsumableItem itemCard = (ConsumableItem) card;
-												FightTab.readHelper().putCard(
-														card);
-												FightTab.readHelper()
-														.setStrength(
-																FightTab.readHelper()
-																		.getStrength()
-																		+ itemCard
-																				.getBonus());
-											}
-										// TODO Bonus de Job/Race
-										// TODO Afficher Monstre
-										compare = "OUI".compareTo(answer);
-									case "NON":
-										compare = "OUI".compareTo(answer);
-									}
-							}
-						// TODO A finir
-					case "NON":
+						case "OUI":
+							System.out
+									.println("Indiquez le pseudo du joueur concerné.");
+							sc1 = new Scanner(System.in);
+							String nickname;
+							nickname = sc1.nextLine();
+							nickname.toUpperCase();
+							sc1.close();
+							for (int i = 0; i < Munchkin.getNbPlayer(); i++)
+								{
+									if (nickname == Munchkin.getTabOfPlayers()[i]
+											.getPseudo().toUpperCase())
+										FightTab.editHelper(Munchkin
+												.getTabOfPlayers()[i]);
+								}
+							Player playerOfTheFight = FightTab.readPlayer();
+							Player helperOfTheFight = FightTab.readHelper();
+							String answer = "OUI";
+							int compare = "OUI".compareTo(answer);
+							while (compare == 0)
+								{
+									System.out
+											.println(FightTab.readPlayer()
+													.getPseudo()
+													+ ", Voulez-vous rajouter des bonus à vos dégâts ?");
+									answer = sc1.nextLine();
+									sc1.close();
+									answer.toUpperCase();
+									switch (answer)
+										{
+											case "OUI":
+												Card card = FightTab
+														.readPlayer()
+														.chooseCardToPut();
+												if (card instanceof ConsumableItem)
+													{
+														ConsumableItem itemCard = (ConsumableItem) card;
+														FightTab.readPlayer()
+																.putCard(card);
+														FightTab.readPlayer()
+																.setStrength(
+																		FightTab.readPlayer()
+																				.getStrength()
+																				+ itemCard
+																						.getBonus());
+													}
+												// TODO Bonus de Job/Race
+												// TODO Afficher Player
+												compare = "OUI"
+														.compareTo(answer);
+											case "NON":
+												compare = "OUI"
+														.compareTo(answer);
+										}
+								}
+							answer = "OUI";
+							compare = "OUI".compareTo(answer);
+							while (compare == 0)
+								{
+									System.out
+											.println(FightTab.readHelper()
+													.getPseudo()
+													+ ", voulez-vous rajouter des bonus à vos dégâts ?");
+									answer = sc1.nextLine();
+									sc1.close();
+									answer.toUpperCase();
+									switch (answer)
+										{
+											case "OUI":
+												Card card = FightTab
+														.readHelper()
+														.chooseCardToPut();
+												if (card instanceof ConsumableItem)
+													{
+														ConsumableItem itemCard = (ConsumableItem) card;
+														FightTab.readHelper()
+																.putCard(card);
+														FightTab.readHelper()
+																.setStrength(
+																		FightTab.readHelper()
+																				.getStrength()
+																				+ itemCard
+																						.getBonus());
+													}
+												// TODO Bonus de Job/Race
+												// TODO Afficher Monstre
+												compare = "OUI"
+														.compareTo(answer);
+											case "NON":
+												compare = "OUI"
+														.compareTo(answer);
+										}
+								}
+							// TODO A finir
+						case "NON":
 
 					}
 
 				return null;
 			}
 
+
 		public Player[] getPlayers()
 			{
-					return Players;
+				return Players;
 			}
 
 		public void setPlayers(Player[] players)
 			{
-					Players = players;
+				Players = players;
 			}
+		
 	}
