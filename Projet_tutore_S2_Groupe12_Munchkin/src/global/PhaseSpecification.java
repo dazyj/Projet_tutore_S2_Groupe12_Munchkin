@@ -9,7 +9,6 @@ import global.card.treasure_card.enumeration.*;
 
 public enum PhaseSpecification
 {
-	INITIALISATION(0),
 	DUNGEON_CARD_1(1),
 	CONSEQUENCES(2),
 	PERSONAL_PHASE(3);
@@ -20,8 +19,6 @@ public enum PhaseSpecification
 	 * To reset a move, we just set the numPhase to 1.
 	 */
 	private int numPhase;
-	
-	private boolean isFinished;
 	
 	/**
 	 * Create a new Phase
@@ -43,27 +40,10 @@ public enum PhaseSpecification
 		return this.numPhase;
 	}
 	
-	public boolean getIsFinished()
-	{
-		return this.isFinished;
-	}
-	
-	public void isFinished()
-	{
-		this.isFinished = true;
-	}
-	
-	public void isNotFinished()
-	{
-		this.isFinished = false;
-	}
-	
 	public static PhaseSpecification phaseFromNumPhase(int nPhase)
 	{
 		switch (nPhase)
 		{
-		case 0:
-			return INITIALISATION;
 		case 1:
 			return DUNGEON_CARD_1;
 		case 2:

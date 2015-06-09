@@ -135,6 +135,7 @@ public class Game
 					while (compare == 0)
 					{
 						System.out.println("Bonjour joueur " + iString + " Voulez-vous ajouter un bonus au monstre ?");
+						// TODO AFficher les cartes de la main
 						answer = sc1.nextLine();
 						sc1.close();
 						answer.toUpperCase();

@@ -33,7 +33,7 @@ public class Equipment extends TreasureCard
 				this.value = equipment.getValue();
 
 			}
-
+		
 		public String getCategory()
 			{
 				return this.category;

@@ -20,9 +20,14 @@ public class Move
 				idPlayersMove++;
 			else 
 				idPlayersMove = -1;
+			// TODO AFficher les cartes de la main
 			PhaseDungeonCard1.start();
+			// TODO AFficher les cartes de la main
 			PhaseConsequences.start();
+			// TODO AFficher les cartes de la main
 			PhasePersonnalPhase.start();
+			// TODO AFficher les cartes de la main
+
 		}
 		
 		public static int getNbMove()

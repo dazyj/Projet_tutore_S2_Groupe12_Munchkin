@@ -51,7 +51,7 @@ public class PhaseConsequences
 					{
 						FightTab.readHelper().sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
 					}				
-					System.out.println(FightTab.readHelper().getPseudo()+" a gagner" +gainCardHelper+"trésors et "+gainLevelHelper+"level");					
+					System.out.println(FightTab.readHelper().getPseudo()+" a gagner" +gainCardHelper+"trésors et "+gainLevelHelper+"niveaux");					
 				}			
 			} 
 			else
@@ -59,7 +59,7 @@ public class PhaseConsequences
 				System.out.println("vous tentez de fuir !");
 				if(Munchkin.getGameOfMunchkin().tryFlee(tabOfPlayers[Move.getIdPlayersMove()]))
 				{
-					System.out.println("vous avez réussis à fuir !");
+					System.out.println("vous avez réussi à fuir !");
 				}
 				else
 				{

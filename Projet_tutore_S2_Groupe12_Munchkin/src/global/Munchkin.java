@@ -7,6 +7,11 @@ import global.card.dungeon_card.enumeration.*;
 import global.card.treasure_card.*;
 import global.card.treasure_card.enumeration.*;
 
+//TODO JAAVADOC
+//TODO TOSTRING
+//TODO TESTS
+//TODO CREER CARTES
+
 public class Munchkin
 {
 
@@ -21,15 +26,10 @@ public class Munchkin
 	
 	public static void main(String[] args)
 	{
-		System.out.println("Bienvenue dans le Munchkin, nous allons procéder à la création d'une nouvelle partie.");
-		Monster Monstre1 = new Monster(MonsterSpecification.bailiff);
-		Monstre1.setHiddenFace(true);
-		System.out.println(Monstre1.toString());
-		Monstre1.setHiddenFace(false);
-		System.out.println(Monstre1.toString());
 		
-		System.out.println("PHASE CONSEQUENCE");
-		if()
+		System.out.println("Bienvenue dans le Munchkin, nous allons procéder à la création d'une nouvelle partie.");
+		nbPlayer = IHMPlayer.selectNbPlayers();
+		createGame();
 	}
 
 	/**

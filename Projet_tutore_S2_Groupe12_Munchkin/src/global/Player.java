@@ -36,6 +36,7 @@ public class Player
 
 		private PlayerEquipment playerEquipment;
 		
+
 		/**
 		 * Create a new player with his pseudo.
 		 * 
@@ -46,7 +47,7 @@ public class Player
 				/**
 				 * The name that the player use during the Game.
 				 */
-				this.race = RaceSpecification.human;
+				this.race = null;
 				this.pseudo = pseudo;
 				this.hand = new HandPlayer();
 				this.level = 1;
@@ -66,7 +67,8 @@ public class Player
 						.listIterator();
 				while (iterator.hasNext())
 					{
-						if (iterator.next().getName() == name)
+						int compare = name.compareTo(iterator.next().getName());
+						if (compare == 0)
 							{
 								return this.hand.getHandPlayer().remove(iterator.previousIndex());
 							}
@@ -107,7 +109,7 @@ public class Player
 		public void sendCard(Heap heap)
 			{
 				if (this.hand.getHandPlayer().size() < this.hand
-						.getMaximumNumberCard())
+						.getNbMaxCard())
 					{
 						this.hand.getHandPlayer().add(heap.RemoveFirstCard());
 					}
@@ -128,7 +130,8 @@ public class Player
 						.listIterator();
 				while (iterator.hasNext())
 					{
-						if (iterator.next().getName() == name)
+						int compare = name.compareTo(iterator.next().getName());
+						if (compare == 0)
 							{
 								if(this.hand.getHandPlayer().get(iterator.previousIndex()) instanceof Equipment)
 									{
@@ -158,12 +161,12 @@ public class Player
 		 */
 		public void SellEquipment(String name)
 			{
-				ListIterator<Equipment> iterator = this.playerEquipment
-						.getEquipment().listIterator();
+				ListIterator<Equipment> iterator = this.playerEquipment.getEquipment().listIterator();
 
 				while (iterator.hasNext())
 					{
-						if (iterator.next().getName() == name)
+						int compare = name.compareTo(iterator.next().getName());
+						if (compare == 0)
 							{
 								Equipment currentCard = (Equipment)this.hand.getHandPlayer().get(iterator.previousIndex());
 								this.money += +iterator.previous().getValue();
@@ -176,6 +179,40 @@ public class Player
 									}
 								iterator.remove();
 								return;
+							}
+					}
+			}
+		
+		public void unequip(String name)
+			{
+				ListIterator<Equipment> iterator = this.playerEquipment.getEquipment().listIterator();
+
+				while (iterator.hasNext())
+					{
+						int compare = name.compareTo(iterator.next().getName());
+						if (compare == 0)
+							{
+								Equipment currentCard = (Equipment)this.getPlayerEquipment().getEquipment().remove(iterator.previousIndex());
+								this.updateStrength(-currentCard.getBonus());
+								this.hand.getHandPlayer().add(currentCard);
+								
+							}
+					}
+			}
+		/**
+		 * 
+		 * @param name
+		 */
+		public void discardPerName(String name)
+			{
+				ListIterator<Card> iterator = this.hand.getHandPlayer().listIterator();
+
+				while (iterator.hasNext())
+					{
+						int compare = name.compareTo(iterator.next().getName());
+						if (compare == 0)
+							{
+								iterator.remove();
 							}
 					}
 			}

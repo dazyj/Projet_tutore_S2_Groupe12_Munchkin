@@ -36,6 +36,7 @@ public abstract class Card
 			{
 					return this.name;
 			}
+				
 		public boolean equals(Object objectTest)
 		{
 			if (objectTest == this)

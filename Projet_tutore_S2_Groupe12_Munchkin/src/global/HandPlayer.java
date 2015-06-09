@@ -19,39 +19,23 @@ public class HandPlayer
 		 */
 		private List<Card> handPlayer;
 
-		private int maximumNumberCard;
+		private final int maximumNumberCard;
 
 		public HandPlayer()
 			{
+				this.maximumNumberCard = 5;
 				this.handPlayer = new ArrayList<Card>();
-				this.setMaximumNumberCard(5);
 			}
 
 		public List<Card> getHandPlayer()
 			{
 					return handPlayer;
 			}
-
-		public void toEquip(String name)
-		{
-			
-		}
 		
 		public int getNbMaxCard()
 		{
 			return this.maximumNumberCard;
 		}
 
-		public int getMaximumNumberCard()
-			{
-					return maximumNumberCard;
-			}
-
-		public void setMaximumNumberCard(int maximumNumberCard)
-			{
-					this.maximumNumberCard = maximumNumberCard;
-			}
-
-		
 
 	}
