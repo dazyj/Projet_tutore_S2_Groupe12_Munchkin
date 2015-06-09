@@ -35,7 +35,7 @@ public class Player
 		private int money;
 
 		private PlayerEquipment playerEquipment;
-
+		
 		/**
 		 * Create a new player with his pseudo.
 		 * 
@@ -81,7 +81,7 @@ public class Player
 		 * 
 		 * @param heap
 		 */
-		public void sendCardHAnd(Card card)
+		public void sendCardHand(Card card)
 			{
 					{
 						this.hand.getHandPlayer().add(card);

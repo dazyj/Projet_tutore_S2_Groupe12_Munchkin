@@ -1,5 +1,6 @@
 package global;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import global.*;
@@ -9,119 +10,104 @@ import global.card.dungeon_card.enumeration.*;
 import global.card.treasure_card.*;
 import global.card.treasure_card.enumeration.*;
 
+/**
+ * The main object of the Munchkin.
+ * This class allow the Player to play a game of Munchkin. It contains all the methods that control the game's phases or the actions relatives to the game (fight, etc...)
+ * 
+ * @author dazyj
+ *
+ */
+
 public class Game
 	{
 		/**
-		 * The phase of the Game. It allow to know in which part of the game the
-		 * player is.
-		 */
-		private Player[] Players;
-
+		 * The heap Dungeon. 
+		 * It is a heap of cards that contains exclusively cards of type "Dungeon".
+		 */		
 		private Heap Dungeon;
 
+		/**
+		 * The heap Treasure. 
+		 * It is a heap of cards that contains exclusively cards of type "Treasure".
+		 */	
 		private Heap Treasure;
 
 		/**
-		 * Create an object of type Game.
+		 * Create an object of type Game, with his heaps.
 		 */
-		public Game(int Players)
+		public Game()
 			{
 				this.Dungeon = new Heap(CardType.dungeon);
 				this.Treasure = new Heap(CardType.treasure);
 			}
 
 		/**
-		 * Start the game.
+		 * Start the game, and verify before each move of the game, if a player has won the game.
 		 */
 		public void start()
+		{
+			if (Move.getNbMove() == 0)
 			{
-
+				this.initialize();
 			}
-
-		/**
-		 * Determine the number of Card to put, in function of the player and
-		 * his situation in the game.
-		 * 
-		 * @param phase
-		 * @param player
-		 * @return
-		 */
-		public int determineNbCardToPut(PhaseSpecification phase, Player player)
+			boolean win = false;
+			int idSave = 0;
+			for (int i = 0; i < Munchkin.getNbPlayer(); i++)
 			{
-				return 0;
+				if (Munchkin.getTabOfPlayers()[i].getLevel() == 10)
+				{
+					win = true;
+					idSave = i;
+				}
 			}
-
-		/**
-		 * Propose to the player 1 (or more) heap where draw a card. The heaps
-		 * are proposed in function of the situation in the game.
-		 * 
-		 * @param phase
-		 */
-		public void proposeHeap(PhaseSpecification phase)
+			while (!win)
 			{
-
+				Move.start();
 			}
-
-		/**
-		 * Determine the number of cards to draw, in function of the player and
-		 * his situation in the game.
-		 * 
-		 * @param phase
-		 * @param player
-		 * @return
-		 */
-		public int determineNbCardToDraw(PhaseSpecification phase, Player player)
-			{
-				return 0;
-			}
-
-		/**
-		 * Launch the processing that analyze the situation and allow the player
-		 * to put card.
-		 */
-		public void putCard()
-			{
-
-			}
-
-		/**
-		 * LAunch the processing that analyze the situation and allow the player
-		 * to draw a card.
-		 */
-		public void drawCard()
-			{
-
-			}
-
-		/**
-		 * Update the game's stats from the player. It includes the number of
-		 * cards, the levels, the number of the move.
-		 * 
-		 * @param player
-		 */
-		public void updatePlayerStats(Player player)
-			{
-
-			}
+			
+			System.out.println("Félicitations " + Munchkin.getTabOfPlayers()[idSave].getPseudo() + "Vous avez remporté la partie !");
+		}
 
 		/**
 		 * Initialize the game.
+		 * It distribute the cards to the players at the begin of the game.
 		 */
 		public void initialize()
 			{
-
+				for (int j = 0; j < Munchkin.getNbPlayer(); j++)
+					{
+						for (int k = 0; k < 4; k++)
+						{
+							Munchkin.getTabOfPlayers()[j].sendCard(getDungeonHeap());
+							Munchkin.getTabOfPlayers()[j].sendCard(getTreasureHeap());
+						}
+					}
 			}
 
+		/**
+		 * Give the Dungeon Heap.
+		 * @return
+		 */
 		public Heap getDungeonHeap()
 			{
 				return this.Dungeon;
 			}
 
+		/**
+		 * Give the Treasure Heap.
+		 * @return
+		 */
 		public Heap getTreasureHeap()
 			{
 				return this.Treasure;
 			}
 
+		/**
+		 * It identify a player with his id.
+		 * The method use the if of the player to find it in the tabOfPlayers of the game and to return it.
+		 * @param id
+		 * @return
+		 */
 		public Player identifyPlayerById(int id)
 			{
 				for (int i = 0; i < Munchkin.getNbPlayer(); i++)
@@ -133,6 +119,11 @@ public class Game
 				return null;
 			}
 
+		/**
+		 * Add buffs to Monster at the begin of a fight.
+		 * We consult all the player to know if they want put a card to improve the monster.
+		 * @param monster
+		 */
 		public void addBuffToMonster(Monster monster)
 		{
 			for (int i = 0; i < Munchkin.getNbPlayer(); i++)
@@ -176,6 +167,14 @@ public class Game
 				}
 		}
 		
+		/**
+		 * Add buffs to a player.
+		 * We consult the player 2 times to ask him if he want add a buff different?
+		 * The consumable item : it adds a value to the strength of the player that is considered just for the fight.
+		 * The class Bonus : If the player's class is different from "human", he can remove a number of cards to add a bonus to his strength.
+		 * If the player is a dwarf, we add him a bonus of strength.
+		 * @param player
+		 */
 		public void addBufferToPlayer(Player player)
 		{
 			String answer = "OUI";
@@ -208,45 +207,49 @@ public class Game
 								player.setStrength(player.getStrength() + itemCard.getBonus());
 							}
 						}
-						System.out.println("Voulez-vous ajouter un bonus de classe (Guerrier, Voleur, Mage)?");
-						bonus = sc1.nextLine();
-						sc1.close();
-						bonus.toUpperCase();
-						if (test == 0)
+						if (player.getJob().getName() != null)
 						{
-							String maxString = String.valueOf(player.getJob().getNbMaxCardBurnable());
-							String bonusString = String.valueOf(player.getJob().getBonus());
-							System.out.println("Vous pouvez défausser " + maxString + " cartes utilisant chacune un bonus de " + bonusString);
-							System.out.println("Combien de cartes voulez-vous défausser ?");
-							int nbCardToBurn = sc1.nextInt();
+							System.out.println("Voulez-vous ajouter un bonus de classe (Guerrier, Voleur, Prêtre)?");
+							bonus = sc1.nextLine();
 							sc1.close();
-							if (nbCardToBurn < player.getJob().getNbMaxCardBurnable())
+							bonus.toUpperCase();
+							if (test == 0)
 							{
-								int bonusHit = player.getJob().getBonus() * nbCardToBurn;
-								player.setStrength(player.getStrength() + bonusHit);
-							}							
+								String maxString = String.valueOf(player.getJob().getNbMaxCardBurnable());
+								String bonusString = String.valueOf(player.getJob().getBonus());
+								System.out.println("Vous pouvez défausser " + maxString + " cartes utilisant chacune un bonus de " + bonusString);
+								System.out.println("Combien de cartes voulez-vous défausser ?");
+								int nbCardToBurn = sc1.nextInt();
+								sc1.close();
+								if (nbCardToBurn < player.getJob().getNbMaxCardBurnable())
+								{
+									int bonusHit = player.getJob().getBonus() * nbCardToBurn;
+									player.setStrength(player.getStrength() + bonusHit);
+								}							
+							}
 						}
-						System.out.println("Voulez-vous ajouter un bonus de classe (Nain)?");
-						bonus = sc1.nextLine();
-						sc1.close();
-						bonus.toUpperCase();
-						if (test == 0)
+						String nameRace = player.getRace().getName();
+						int test2 = nameRace.compareTo("dwarf");
+						if (test2 > 0)
 						{
-							String nameRace = player.getRace().getName();
-							int test2 = nameRace.compareTo("dwarf");
-							if (test2 > 0)
-							{
-								player.setStrength(player.getStrength() + 1);	
-							}							
-						}
+							player.setStrength(player.getStrength() + 1);	
+						}							
 						// TODO Afficher Player
 						compare = "OUI".compareTo(answer);
 					case "NON":
 						compare = "OUI".compareTo(answer);
+			
 				}
 			}
 		}
 		
+		/**
+		 * Ask to the player gave from the playe of the fight if he wants help him.
+		 * If he accept, we apply the buff adder to them and see the issue of the fight.
+		 * If he refuse we apply the buff adder to the player of the fight alone and see the issue of the fight. 
+		 * @param help
+		 * @param monster
+		 */
 		public void askHelpToFight(String help, Monster monster)
 		{
 			Player playerOfTheFight = FightTab.readPlayer();
@@ -288,8 +291,18 @@ public class Game
 				{
 					FightTab.editIsWin(false);
 				}
+				String jobPlayer = playerOfTheFight.getClass().getName();
+				int test3 = jobPlayer.compareTo("Warrior");
+				if (test3 == 0)
+				{
+					if (playerOfTheFight.getStrength() == monster.getLevel())
+					{
+						FightTab.editIsWin(true);
+					}
+				}
 				
 			case "NON":
+				FightTab.editHelper(null);
 				this.addBufferToPlayer(playerOfTheFight);
 				if (playerOfTheFight.getStrength() > monster.getLevel())
 					{
@@ -299,9 +312,23 @@ public class Game
 					{
 						FightTab.editIsWin(false);
 					}
+				jobPlayer = playerOfTheFight.getClass().getName();
+				int test4 = jobPlayer.compareTo("Warrior");
+				if (test4 == 0)
+				{
+					if (playerOfTheFight.getStrength() == monster.getLevel())
+					{
+						FightTab.editIsWin(true);
+					}
+				}
 			}
 		}
 		
+		/**
+		 * Launch a fight against a monster.
+		 * We ask if someone want help the player.
+		 * @param monster
+		 */
 		public void fight(Monster monster)
 		{
 			System.out.println("Le Combat commence.");
@@ -318,32 +345,63 @@ public class Game
 			help.toUpperCase();
 			this.askHelpToFight(help, monster);
 		}
-
-
-		public Player[] getPlayers()
-			{
-				return Players;
-			}
-
-		public void setPlayers(Player[] players)
-			{
-				Players = players;
-			}
 		
+		/**
+		 * Kill a player. 
+		 * If a player is killed his level come back to the first and his hand is removed.
+		 * @param playerdeath
+		 */
 		public void deathPlayer(Player playerdeath)
+		{
+			while (!playerdeath.getHand().getHandPlayer().isEmpty())
 			{
-				while (!playerdeath.getHand().getHandPlayer().isEmpty())
-					{
-						for (int indexNbPlayer = 0; indexNbPlayer < Munchkin.getNbPlayer(); indexNbPlayer++)
-							{
-								if (indexNbPlayer == Move.getIdPlayersMove())
-									{
-										playerdeath.getHand().getHandPlayer().remove(0);
-									}
-							}
-					}
-				playerdeath.setLevel(1);
-		
+				playerdeath.getHand().getHandPlayer().remove(0);
 			}
+			playerdeath.setLevel(1);
+		}
 		
+		/**
+		 * 
+		 * @param monsterGain
+		 * @param helper
+		 * @return
+		 */
+		public int calculateGainHelper(int monsterGain ,Player helper)
+		{
+			if(helper.getRace().getName() == "Elf")
+				return (monsterGain/2) +1;
+			return monsterGain/2;
+		}
+		/**
+		 * 
+		 * @param monsterGain
+		 * @param player
+		 * @return
+		 */
+		public int CalculateGainPlayer(int monsterGain, Player player)
+		{
+			if(player.getRace().getName() == "Elf")
+				return (monsterGain - (monsterGain/2)) + 1;
+			return monsterGain - (monsterGain/2);
+		}
+		/**
+		 * 
+		 * @param player
+		 * @return
+		 */
+		public boolean TryFlee (Player player)
+		{
+			Random thimble = new Random();
+			int thimbledodge = thimble.nextInt(6) + 1;
+			if(player.getRace().getName() == "Priest")
+				{
+				thimbledodge += 1;
+				}
+			if(thimbledodge >=5)
+				{
+					return true;
+				}
+			else
+				return false;
+		}
 }

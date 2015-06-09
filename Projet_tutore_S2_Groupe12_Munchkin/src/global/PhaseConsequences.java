@@ -11,47 +11,97 @@ import global.card.treasure_card.*;
 import global.card.treasure_card.enumeration.*;
 
 public class PhaseConsequences
+{
+
+	public static void start()
 	{
-
-		public static void start()
+		Player[] tabOfPlayers = Munchkin.getTabOfPlayers();
+		if (PhaseDungeonCard1.isToFight())
+		{
+			if (FightTab.readIsWin())
 			{
-				Player[] tabOfPlayers = Munchkin.getTabOfPlayers();
-				if (PhaseDungeonCard1.isToFight())
+				if(FightTab.readHelper() == null)
+				{
+					System.out.println("vous avez gagnez :"+ FightTab.readMonster().getTreasureGain()+ "trésors.");
+					for (int numberTreasure = 0; numberTreasure < FightTab.readMonster().getTreasureGain(); numberTreasure++)
 					{
-						if (FightTab.readIsWin())
-							{
-								System.out
-										.println("vous avez gagnez :"+ FightTab.readMonster().getTreasureGain()+ "trésors.");
-								for (int numberTreasure = 0; numberTreasure < FightTab.readMonster().getTreasureGain(); numberTreasure++)
-									{
-										tabOfPlayers[Move.getIdPlayersMove()].sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
-									}
-								if (FightTab.readMonster().getLevelGain() != 0)
-									{
-										System.out.println("vous avez gagnez "+ FightTab.readMonster().getLevelGain()+ "niveaux");
-										tabOfPlayers[Move.getIdPlayersMove()].updateLevel(FightTab.readMonster().getLevelGain());
-									}
-							} else
-							{
-								System.out.println("vous tentez de fuir !");
-								Random thimble = new Random();
-								int thimbledodge = thimble.nextInt(6) + 1;
-								if (thimbledodge >= 5)
-									{
-										System.out.println("vous arriver a fuir !");
-									} 
-								else
-									{
-										System.out.println("le monstre vous rattrape et vous cogne !");
-										if(tabOfPlayers[Move.getIdPlayersMove()].getLevel() <= 2)
-											{
-												System.out.println("vous êtes mort !");
-												Munchkin.getGameOfMunchkin().deathPlayer(tabOfPlayers[Move.getIdPlayersMove()]);
-											}
-									}
-
-							}
-
+						tabOfPlayers[Move.getIdPlayersMove()].sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
 					}
+					if (FightTab.readMonster().getLevelGain() != 0)
+					{
+						System.out.println("vous avez gagnez "+ FightTab.readMonster().getLevelGain()+ "niveaux");
+						tabOfPlayers[Move.getIdPlayersMove()].updateLevel(FightTab.readMonster().getLevelGain());
+					}
+				}
+				else
+				{
+					int GainLevelPlayer = Munchkin.getGameOfMunchkin().CalculateGainPlayer(FightTab.readMonster().getLevelGain(), tabOfPlayers[Move.getIdPlayersMove()]);
+					int GainCardPlayer = Munchkin.getGameOfMunchkin().CalculateGainPlayer(FightTab.readMonster().getTreasureGain(),tabOfPlayers[Move.getIdPlayersMove()]);
+					System.out.println("vous avez gagnez le combat avec "+FightTab.readHelper().getPseudo() +" !");
+					System.out.println("vous gagnez "+GainCardPlayer+"trésors et "+GainLevelPlayer+"level");
+					tabOfPlayers[Move.getIdPlayersMove()].updateLevel(Munchkin.getGameOfMunchkin().CalculateGainPlayer(FightTab.readMonster().getLevelGain(), tabOfPlayers[Move.getIdPlayersMove()]));
+					for (int numberCardForPlayer = 0; numberCardForPlayer <= Munchkin.getGameOfMunchkin().CalculateGainPlayer(FightTab.readMonster().getTreasureGain(),tabOfPlayers[Move.getIdPlayersMove()]); numberCardForPlayer++)
+					{
+						tabOfPlayers[Move.getIdPlayersMove()].sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
+					}
+					int gainCardHelper =Munchkin.getGameOfMunchkin().calculateGainHelper(FightTab.readMonster().getTreasureGain(),FightTab.readHelper());
+					int gainLevelHelper =Munchkin.getGameOfMunchkin().calculateGainHelper(FightTab.readMonster().getLevelGain(),FightTab.readHelper());
+					FightTab.readHelper().updateLevel(gainCardHelper);
+					for (int numberCardForHelper = 0; numberCardForHelper <= gainCardHelper; numberCardForHelper++)
+					{
+						FightTab.readHelper().sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
+					}				
+					System.out.println(FightTab.readHelper().getPseudo()+" a gagner" +gainCardHelper+"trésors et "+gainLevelHelper+"level");					
+				}			
+			} 
+			else
+			{
+				System.out.println("vous tentez de fuir !");
+				if(Munchkin.getGameOfMunchkin().TryFlee(tabOfPlayers[Move.getIdPlayersMove()]))
+				{
+					System.out.println("vous avez réussis à fuir !");
+				}
+				else
+				{
+					System.out.println("le monstre vous rattrape et vous cogne !");
+					if(tabOfPlayers[Move.getIdPlayersMove()].getLevel() <= 2)
+					{
+						System.out.println("vous êtes mort !");
+						Munchkin.getGameOfMunchkin().deathPlayer(tabOfPlayers[Move.getIdPlayersMove()]);
+					}
+					else
+					{
+						System.out.println("vous perdez deux niveaux !");
+						tabOfPlayers[Move.getIdPlayersMove()].updateLevel(-2);
+					}
+				}
+				if(FightTab.readHelper() != null)
+				{
+					if(Munchkin.getGameOfMunchkin().TryFlee(FightTab.readHelper()))
+					{
+						System.out.println(FightTab.readHelper().getPseudo()+" réussis à fuir !");
+					}
+					else
+					{
+						System.out.println("le monstre rattrape et vous cogne !");
+						if(FightTab.readHelper().getLevel() <= 2)
+						{
+							System.out.println("vous êtes mort !");
+							Munchkin.getGameOfMunchkin().deathPlayer(FightTab.readHelper());
+						}
+						else
+						{
+							System.out.println("vous perdez deux niveaux !");
+							FightTab.readHelper().updateLevel(-2);
+						}
+					}
+				}
 			}
+		}
+		else
+		{
+			System.out.println("vous pillez la pièce !");
+			tabOfPlayers[Move.getIdPlayersMove()].sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
+		}
 	}
+}

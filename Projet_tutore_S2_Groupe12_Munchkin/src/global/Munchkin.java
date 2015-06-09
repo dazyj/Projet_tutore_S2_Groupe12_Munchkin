@@ -37,6 +37,7 @@ public class Munchkin
 	*/
 	public static void createGame()
 	{
+		gameOfMunchkin = new Game();
 		tabOfPlayers = new Player[Munchkin.nbPlayer];
 		
 		for (int i = 0; i < Munchkin.nbPlayer; i++)
