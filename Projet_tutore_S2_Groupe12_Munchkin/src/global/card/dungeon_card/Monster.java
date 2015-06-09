@@ -72,6 +72,7 @@ public class Monster extends DungeonCard
 			{
 				this.treasureGain = treasureGain;
 			}
+<<<<<<< Upstream, based on origin/master
 
 		@Override
 		public String toString()
@@ -87,4 +88,6 @@ public class Monster extends DungeonCard
 			}
 			
 		}
+=======
+>>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 	}

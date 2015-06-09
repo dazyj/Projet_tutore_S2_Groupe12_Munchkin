@@ -26,7 +26,9 @@ public class Player
 
 		private int level;
 
-		private String race;
+		private Race race;
+		
+		private Job job;
 
 		private int idPlayer;
 
@@ -44,7 +46,7 @@ public class Player
 				/**
 				 * The name that the player use during the Game.
 				 */
-				this.race = RaceSpecification.human.getName();
+				this.race = RaceSpecification.human;
 				this.pseudo = pseudo;
 				this.hand = new HandPlayer();
 				this.level = 1;
@@ -192,15 +194,25 @@ public class Player
 				return this.level;
 			}
 
-		public String getRace()
+		public Race getRace()
 			{
 				return this.race;
 			}
+		
+		public Job getJob()
+		{
+			return this.job;
+		}
 
-		public void setRace(RaceSpecification race)
+		public void setRace(Race race)
 			{
-				this.race = race.getName();
+				this.race = race;
 			}
+		
+		public void setJob(Job job)
+		{
+			this.job = job;
+		}
 
 		public String getPseudo()
 			{

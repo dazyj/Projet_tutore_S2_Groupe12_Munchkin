@@ -16,8 +16,11 @@ public class Game
 		 * player is.
 		 */
 		private Player[] Players;
+<<<<<<< Upstream, based on origin/master
 
 		private PhaseSpecification gamePhase;
+=======
+>>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 
 		private Heap Dungeon;
 
@@ -28,10 +31,9 @@ public class Game
 		 */
 		public Game(int Players)
 			{
-				this.gamePhase = PhaseSpecification.INITIALISATION;
-				this.gamePhase.isNotFinished();
 				this.Dungeon = new Heap(CardType.dungeon);
 				this.Treasure = new Heap(CardType.treasure);
+<<<<<<< Upstream, based on origin/master
 			}
 
 		/**
@@ -76,6 +78,8 @@ public class Game
 		public void finishPhase()
 			{
 				this.gamePhase.isFinished();
+=======
+>>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 			}
 
 		/**
@@ -181,6 +185,7 @@ public class Game
 				return null;
 			}
 
+<<<<<<< Upstream, based on origin/master
 		public FightTab fight(Monster monster)
 			{
 				System.out.println("Le Combat commence.");
@@ -189,7 +194,19 @@ public class Game
 				FightTab.editMonster(monster);
 				// TODO Afficher Monstre
 				for (int i = 0; i < Munchkin.getNbPlayer(); i++)
+=======
+		public void addBuffToMonster(Monster monster)
+		{
+			for (int i = 0; i < Munchkin.getNbPlayer(); i++)
+				{
+					String iString = String.valueOf(i);
+					Scanner sc1 = new Scanner(System.in);
+					String answer = "OUI";
+					int compare = "OUI".compareTo(answer);
+					while (compare == 0)
+>>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 					{
+<<<<<<< Upstream, based on origin/master
 						String iString = String.valueOf(i);
 						Scanner sc1 = new Scanner(System.in);
 						String answer = "OUI";
@@ -350,10 +367,184 @@ public class Game
 							// TODO A finir
 						case "NON":
 
+=======
+						System.out.println("Bonjour joueur " + iString + " Voulez-vous ajouter un bonus au monstre ?");
+						answer = sc1.nextLine();
+						sc1.close();
+						answer.toUpperCase();
+						switch (answer)
+						{
+							case "OUI":
+								System.out.println("Choisissez une carte à poser. Rentrer le nom de la carte.");
+								String name = sc1.nextLine();
+								sc1.close();
+								name.toUpperCase();
+								Card card = Munchkin.getTabOfPlayers()[i].chooseCardToPut(name);
+								if (card instanceof ConsumableItem)
+								{
+									ConsumableItem itemCard = (ConsumableItem) card;
+									FightTab.readMonster().setLevel(FightTab.readMonster().getLevel() + itemCard.getBonus());
+								}
+								if (card instanceof MonsterCurse)
+								{
+									MonsterCurse monsterCurseCard = (MonsterCurse) card;
+									FightTab.readMonster().setLevel(
+									FightTab.readMonster().getLevel() + monsterCurseCard.getMonsterLevelEffect());
+									FightTab.readMonster().setTreasureGain(FightTab.readMonster().getTreasureGain() + monsterCurseCard.getTreasureCardEffect());
+								}
+								// TODO Afficher Monstre
+								compare = "OUI".compareTo(answer);
+							case "NON":
+								compare = "OUI".compareTo(answer);
+						}
+>>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 					}
-
-				return null;
+				}
+		}
+		
+		public void addBufferToPlayer(Player player)
+		{
+			String answer = "OUI";
+			int compare = "OUI".compareTo(answer);
+			while (compare == 0)
+			{
+				System.out.println(player.getPseudo()+ ", Voulez-vous rajouter des bonus à vos dégâts ?");
+				Scanner sc1 = new Scanner(System.in);
+				answer = sc1.nextLine();
+				sc1.close();
+				answer.toUpperCase();
+				switch (answer)
+				{
+					case "OUI":
+						System.out.println("Voulez-vous ajouter un bonus de carte ? (consommable)?");
+						String bonus = sc1.nextLine();
+						sc1.close();
+						bonus.toUpperCase();
+						int test = "OUI".compareTo(bonus);
+						if (test == 0)
+						{
+							System.out.println("Choisissez une carte à poser. Rentrer le nom de la carte.");
+							String name = sc1.nextLine();
+							sc1.close();
+							name.toUpperCase();
+							Card card = player.chooseCardToPut(name);
+							if (card instanceof ConsumableItem)
+							{
+								ConsumableItem itemCard = (ConsumableItem) card;
+								player.setStrength(player.getStrength() + itemCard.getBonus());
+							}
+						}
+						System.out.println("Voulez-vous ajouter un bonus de classe (Guerrier, Voleur, Mage)?");
+						bonus = sc1.nextLine();
+						sc1.close();
+						bonus.toUpperCase();
+						if (test == 0)
+						{
+							String maxString = String.valueOf(player.getJob().getNbMaxCardBurnable());
+							String bonusString = String.valueOf(player.getJob().getBonus());
+							System.out.println("Vous pouvez défausser " + maxString + " cartes utilisant chacune un bonus de " + bonusString);
+							System.out.println("Combien de cartes voulez-vous défausser ?");
+							int nbCardToBurn = sc1.nextInt();
+							sc1.close();
+							if (nbCardToBurn < player.getJob().getNbMaxCardBurnable())
+							{
+								int bonusHit = player.getJob().getBonus() * nbCardToBurn;
+								player.setStrength(player.getStrength() + bonusHit);
+							}							
+						}
+						System.out.println("Voulez-vous ajouter un bonus de classe (Nain)?");
+						bonus = sc1.nextLine();
+						sc1.close();
+						bonus.toUpperCase();
+						if (test == 0)
+						{
+							String nameRace = player.getRace().getName();
+							int test2 = nameRace.compareTo("dwarf");
+							if (test2 > 0)
+							{
+								player.setStrength(player.getStrength() + 1);	
+							}							
+						}
+						// TODO Afficher Player
+						compare = "OUI".compareTo(answer);
+					case "NON":
+						compare = "OUI".compareTo(answer);
+				}
 			}
+		}
+		
+		public void askHelpToFight(String help, Monster monster)
+		{
+			Player playerOfTheFight = FightTab.readPlayer();
+			Player helperOfTheFight = FightTab.readHelper();
+			switch (help)
+			{
+			case "OUI":
+				System.out.println("Indiquez le pseudo du joueur concerné.");
+				Scanner sc1 = new Scanner(System.in);
+				String nickname;
+				nickname = sc1.nextLine();
+				nickname.toUpperCase();
+				sc1.close();
+				for (int i = 0; i < Munchkin.getNbPlayer(); i++)
+				{
+					if (nickname == Munchkin.getTabOfPlayers()[i].getPseudo().toUpperCase())
+						{
+							System.out.println(nickname + ", êtes vous OK pour aider " + playerOfTheFight.getPseudo() + "?");
+							String ok = sc1.nextLine();
+							ok.toUpperCase();
+							sc1.close();
+							switch (ok)
+							{
+								case "OUI":
+									FightTab.editHelper(Munchkin.getTabOfPlayers()[i]);
+								case "NON":
+									FightTab.editHelper(null);
+							}
+						}
+						
+				}
+				this.addBufferToPlayer(playerOfTheFight);
+				this.addBufferToPlayer(helperOfTheFight);
+				if (playerOfTheFight.getStrength() + helperOfTheFight.getStrength() > monster.getLevel())
+				{
+					FightTab.editIsWin(true);
+				}
+				else
+				{
+					FightTab.editIsWin(false);
+				}
+				
+			case "NON":
+				this.addBufferToPlayer(playerOfTheFight);
+				if (playerOfTheFight.getStrength() > monster.getLevel())
+					{
+						FightTab.editIsWin(true);
+					}
+					else
+					{
+						FightTab.editIsWin(false);
+					}
+			}
+		}
+		
+		public void fight(Monster monster)
+		{
+			System.out.println("Le Combat commence.");
+			FightTab.editPlayer(this.identifyPlayerById(Move.getIdPlayersMove()));
+			FightTab.editMonster(monster);
+			// TODO Afficher Monstre
+			this.addBuffToMonster(monster);
+			
+			System.out.println("Voulez-vous qu'un joueur vous aide ?");
+			Scanner sc1 = new Scanner(System.in);
+			String help;
+			help = sc1.nextLine();
+			sc1.close();
+			help.toUpperCase();
+			this.askHelpToFight(help, monster);
+		}
+
 
 
 		public Player[] getPlayers()

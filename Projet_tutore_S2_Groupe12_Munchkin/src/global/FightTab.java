@@ -16,7 +16,11 @@ public class FightTab
 		private static Monster monster;
 
 		private static boolean isWin;
+<<<<<<< Upstream, based on origin/master
 
+=======
+		
+>>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 		public static void editPlayer(Player pPlayer)
 			{
 				player = pPlayer;
@@ -27,11 +31,28 @@ public class FightTab
 				helper = pHelper;
 			}
 
+<<<<<<< Upstream, based on origin/master
+=======
+		
+>>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 		public static void editMonster(Monster pMonster)
 			{
 				monster = pMonster;
 			}
 
+<<<<<<< Upstream, based on origin/master
+=======
+		public static void editIsWin(boolean b)
+		{
+			isWin = b;
+		}
+		
+		public static boolean readIsWin()
+		{
+			return isWin;
+		}
+		
+>>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 		public static Player readPlayer()
 			{
 				return player;
@@ -47,6 +68,7 @@ public class FightTab
 				return monster;
 			}
 
+<<<<<<< Upstream, based on origin/master
 		public static boolean readIsWin()
 			{
 				return isWin;
@@ -56,4 +78,6 @@ public class FightTab
 			return isWin = win;
 		}
 
+=======
+>>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 	}
