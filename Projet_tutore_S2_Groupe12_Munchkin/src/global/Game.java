@@ -16,11 +16,6 @@ public class Game
 		 * player is.
 		 */
 		private Player[] Players;
-<<<<<<< Upstream, based on origin/master
-
-		private PhaseSpecification gamePhase;
-=======
->>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 
 		private Heap Dungeon;
 
@@ -33,53 +28,6 @@ public class Game
 			{
 				this.Dungeon = new Heap(CardType.dungeon);
 				this.Treasure = new Heap(CardType.treasure);
-<<<<<<< Upstream, based on origin/master
-			}
-
-		/**
-		 * Identify in which phase of the game we are at the moment where the
-		 * method is called.
-		 * 
-		 * @return
-		 */
-		public PhaseSpecification identifyPhaseOfGame()
-			{
-				return this.gamePhase;
-			}
-
-		/**
-		 * Start the Next phase of the game.
-		 */
-		public void startNextPhase()
-			{
-				int numPhaseFromGamePhase;
-				numPhaseFromGamePhase = this.gamePhase.getNumPhase();
-				if (numPhaseFromGamePhase == 3)
-					numPhaseFromGamePhase = 1;
-				else
-					numPhaseFromGamePhase++;
-				this.gamePhase = PhaseSpecification
-						.phaseFromNumPhase(numPhaseFromGamePhase);
-				this.gamePhase.isNotFinished();
-				switch (this.gamePhase)
-					{
-						case DUNGEON_CARD_1:
-							PhaseDungeonCard1.start();
-						case CONSEQUENCES:
-							PhaseConsequences.start();
-						case PERSONAL_PHASE:
-							PhasePersonnalPhase.start();
-					}
-			}
-
-		/**
-		 * Finish the actually phase of the game.
-		 */
-		public void finishPhase()
-			{
-				this.gamePhase.isFinished();
-=======
->>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 			}
 
 		/**
@@ -185,16 +133,6 @@ public class Game
 				return null;
 			}
 
-<<<<<<< Upstream, based on origin/master
-		public FightTab fight(Monster monster)
-			{
-				System.out.println("Le Combat commence.");
-				FightTab.editPlayer(this.identifyPlayerById(Move
-						.getIdPlayersMove()));
-				FightTab.editMonster(monster);
-				// TODO Afficher Monstre
-				for (int i = 0; i < Munchkin.getNbPlayer(); i++)
-=======
 		public void addBuffToMonster(Monster monster)
 		{
 			for (int i = 0; i < Munchkin.getNbPlayer(); i++)
@@ -204,170 +142,7 @@ public class Game
 					String answer = "OUI";
 					int compare = "OUI".compareTo(answer);
 					while (compare == 0)
->>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 					{
-<<<<<<< Upstream, based on origin/master
-						String iString = String.valueOf(i);
-						Scanner sc1 = new Scanner(System.in);
-						String answer = "OUI";
-						int compare = "OUI".compareTo(answer);
-						while (compare == 0)
-							{
-								System.out
-										.println("Bonjour joueur "
-												+ iString
-												+ " Voulez-vous ajouter un bonus au monstre ?");
-								answer = sc1.nextLine();
-								sc1.close();
-								answer.toUpperCase();
-								switch (answer)
-									{
-										case "OUI":
-											Card card = Munchkin
-													.getTabOfPlayers()[i]
-													.chooseCardToPut();
-											if (card instanceof ConsumableItem)
-												{
-													ConsumableItem itemCard = (ConsumableItem) card;
-													Munchkin.getTabOfPlayers()[i]
-															.putCard(card);
-													FightTab.readMonster()
-															.setLevel(
-																	FightTab.readMonster()
-																			.getLevel()
-																			+ itemCard
-																					.getBonus());
-												}
-											if (card instanceof MonsterCurse)
-												{
-													MonsterCurse monsterCurseCard = (MonsterCurse) card;
-													Munchkin.getTabOfPlayers()[i]
-															.putCard(card);
-													FightTab.readMonster()
-															.setLevel(
-																	FightTab.readMonster()
-																			.getLevel()
-																			+ monsterCurseCard
-																					.getMonsterLevelEffect());
-													FightTab.readMonster()
-															.setTreasureGain(
-																	FightTab.readMonster()
-																			.getTreasureGain()
-																			+ monsterCurseCard
-																					.getTreasureCardEffect());
-												}
-											// TODO Afficher Monstre
-											compare = "OUI".compareTo(answer);
-										case "NON":
-											compare = "OUI".compareTo(answer);
-									}
-							}
-					}
-				System.out.println("Voulez-vous qu'un joueur vous aide ?");
-				Scanner sc1 = new Scanner(System.in);
-				String help;
-				help = sc1.nextLine();
-				sc1.close();
-				help.toUpperCase();
-				switch (help)
-					{
-						case "OUI":
-							System.out
-									.println("Indiquez le pseudo du joueur concerné.");
-							sc1 = new Scanner(System.in);
-							String nickname;
-							nickname = sc1.nextLine();
-							nickname.toUpperCase();
-							sc1.close();
-							for (int i = 0; i < Munchkin.getNbPlayer(); i++)
-								{
-									if (nickname == Munchkin.getTabOfPlayers()[i]
-											.getPseudo().toUpperCase())
-										FightTab.editHelper(Munchkin
-												.getTabOfPlayers()[i]);
-								}
-							Player playerOfTheFight = FightTab.readPlayer();
-							Player helperOfTheFight = FightTab.readHelper();
-							String answer = "OUI";
-							int compare = "OUI".compareTo(answer);
-							while (compare == 0)
-								{
-									System.out
-											.println(FightTab.readPlayer()
-													.getPseudo()
-													+ ", Voulez-vous rajouter des bonus à vos dégâts ?");
-									answer = sc1.nextLine();
-									sc1.close();
-									answer.toUpperCase();
-									switch (answer)
-										{
-											case "OUI":
-												Card card = FightTab
-														.readPlayer()
-														.chooseCardToPut();
-												if (card instanceof ConsumableItem)
-													{
-														ConsumableItem itemCard = (ConsumableItem) card;
-														FightTab.readPlayer()
-																.putCard(card);
-														FightTab.readPlayer()
-																.setStrength(
-																		FightTab.readPlayer()
-																				.getStrength()
-																				+ itemCard
-																						.getBonus());
-													}
-												// TODO Bonus de Job/Race
-												// TODO Afficher Player
-												compare = "OUI"
-														.compareTo(answer);
-											case "NON":
-												compare = "OUI"
-														.compareTo(answer);
-										}
-								}
-							answer = "OUI";
-							compare = "OUI".compareTo(answer);
-							while (compare == 0)
-								{
-									System.out
-											.println(FightTab.readHelper()
-													.getPseudo()
-													+ ", voulez-vous rajouter des bonus à vos dégâts ?");
-									answer = sc1.nextLine();
-									sc1.close();
-									answer.toUpperCase();
-									switch (answer)
-										{
-											case "OUI":
-												Card card = FightTab
-														.readHelper()
-														.chooseCardToPut();
-												if (card instanceof ConsumableItem)
-													{
-														ConsumableItem itemCard = (ConsumableItem) card;
-														FightTab.readHelper()
-																.putCard(card);
-														FightTab.readHelper()
-																.setStrength(
-																		FightTab.readHelper()
-																				.getStrength()
-																				+ itemCard
-																						.getBonus());
-													}
-												// TODO Bonus de Job/Race
-												// TODO Afficher Monstre
-												compare = "OUI"
-														.compareTo(answer);
-											case "NON":
-												compare = "OUI"
-														.compareTo(answer);
-										}
-								}
-							// TODO A finir
-						case "NON":
-
-=======
 						System.out.println("Bonjour joueur " + iString + " Voulez-vous ajouter un bonus au monstre ?");
 						answer = sc1.nextLine();
 						sc1.close();
@@ -397,7 +172,6 @@ public class Game
 							case "NON":
 								compare = "OUI".compareTo(answer);
 						}
->>>>>>> ee2706d fight + 2-3 modifs game + delete toString() Monster + FightTab
 					}
 				}
 		}
@@ -544,7 +318,6 @@ public class Game
 			help.toUpperCase();
 			this.askHelpToFight(help, monster);
 		}
-
 
 
 		public Player[] getPlayers()
