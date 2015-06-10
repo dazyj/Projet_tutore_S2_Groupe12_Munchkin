@@ -2,6 +2,9 @@ package global;
 
 import global.card.Card;
 import global.card.TreasureCard;
+import global.card.dungeon_card.Job;
+import global.card.dungeon_card.Race;
+import global.card.treasure_card.LevelEffect;
 
 import java.util.Scanner;
 
@@ -22,8 +25,9 @@ public class PhasePersonnalPhase
 	{
 			
 			boolean test = false;
-			while (Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getHand().getHandPlayer().size() >= 5 || test == false)
+			while (Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getHand().getHandPlayer().size() > 5 || test == false)
 			{
+				
 				test = true;
 				boolean choice = true;
 				while (choice)
@@ -148,6 +152,71 @@ public class PhasePersonnalPhase
 							trash = false;
 					}
 				}
+				boolean levelEffect = true;
+				while (levelEffect)
+				{
+					System.out.println("Voulez-vous utiliser une carte gain de niveau ?");
+					Scanner sc1 = new Scanner(System.in);
+					String gainLevel = sc1.nextLine();
+					gainLevel.toUpperCase();
+					switch (gainLevel)
+					{
+						case "OUI":
+							System.out.println("Veuillez sélectionner la carte à utiliser (nom objet).");
+							String cardLevel = sc1.nextLine();
+							cardLevel.toUpperCase();
+							Card cardToPlay = Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].chooseCardToPut(cardLevel);
+							LevelEffect card = (LevelEffect) cardToPlay;
+							System.out.println("Veuillez sélectionner un joueur à qui faire perdre des niveaux (si c'est possible) (nom objet).");
+							String nameTargetPlayer = sc1.nextLine();
+							nameTargetPlayer.toUpperCase();
+							card.effect(Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()], Munchkin.getGameOfMunchkin().identifyPlayerByName(nameTargetPlayer));
+						case "NON":
+							levelEffect = false;
+					}
+				}
+				boolean job = true;
+				while (job)
+				{
+					System.out.println("Voulez-vous poser une carte de job ?");
+					Scanner sc1 = new Scanner(System.in);
+					String testJob = sc1.nextLine();
+					testJob.toUpperCase();
+					switch (testJob)
+					{
+						case "OUI":
+							System.out.println("Veuillez sélectionner la carte à poser (nom objet).");
+							String cardJob = sc1.nextLine();
+							cardJob.toUpperCase();
+							Card cardJobPut = Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].chooseCardToPut(cardJob);
+							Job card = (Job) cardJobPut;
+							Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].setJob(card);
+						case "NON":
+							job = false;
+					}
+				}
+				boolean race = true;
+				while (race)
+				{
+					System.out.println("Voulez-vous poser une carte de race ?");
+					Scanner sc1 = new Scanner(System.in);
+					String testRace = sc1.nextLine();
+					testRace.toUpperCase();
+					switch (testRace)
+					{
+						case "OUI":
+							System.out.println("Veuillez sélectionner la carte à poser (nom objet).");
+							String cardRace = sc1.nextLine();
+							cardRace.toUpperCase();
+							Card cardRacePut = Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].chooseCardToPut(cardRace);
+							Race card = (Race) cardRacePut;
+							Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].setRace(card);
+						case "NON":
+							race = false;
+					}
+				}
+				System.out.println(Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getHand().getHandPlayer().toString());
+				System.out.println(Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].toString());
 			}
 	}
 }

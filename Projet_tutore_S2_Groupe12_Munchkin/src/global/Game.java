@@ -118,6 +118,18 @@ public class Game
 					}
 				return null;
 			}
+		
+		public Player identifyPlayerByName(String name)
+			{
+				for (int i = 0; i < Munchkin.getNbPlayer(); i++)
+					{
+						Player player = Munchkin.getTabOfPlayers()[i];
+						int compare = name.compareTo(player.getPseudo());
+						if (compare == 0)
+							return player;
+					}
+				return null;
+			}
 
 		/**
 		 * Add buffs to Monster at the begin of a fight.
@@ -178,6 +190,9 @@ public class Game
 		{
 			String response = "OUI";
 			int compare = "OUI".compareTo(response);
+			FightTab.setLevelBeforeP(FightTab.readPlayer().getLevel());
+			if (FightTab.readHelper() != null)
+				FightTab.setLevelBeforeH(FightTab.readHelper().getLevel());
 			while (compare == 0)
 			{
 				String answer;
@@ -202,6 +217,7 @@ public class Game
 							{
 								ConsumableItem itemCard = (ConsumableItem) card;
 								player.setStrength(player.getStrength() + itemCard.getBonus());
+								
 							}
 						}
 						if (player.getJob().getName() != null)
@@ -209,25 +225,29 @@ public class Game
 							System.out.println("Voulez-vous ajouter un bonus de classe (Guerrier, Voleur, Prêtre)?");
 							bonus = sc1.nextLine();
 							bonus.toUpperCase();
+							test = "OUI".compareTo(bonus);
 							if (test == 0)
 							{
 								String maxString = String.valueOf(player.getJob().getNbMaxCardBurnable());
 								String bonusString = String.valueOf(player.getJob().getBonus());
 								System.out.println("Vous pouvez défausser " + maxString + " cartes utilisant chacune un bonus de " + bonusString);
-								System.out.println("Combien de cartes voulez-vous défausser ?");
-								int nbCardToBurn = sc1.nextInt();
-								if (nbCardToBurn < player.getJob().getNbMaxCardBurnable())
+								if (player.getJob().getNbMaxCardBurnable() != 0)
 								{
-									int bonusHit = player.getJob().getBonus() * nbCardToBurn;
-									player.setStrength(player.getStrength() + bonusHit);
-								}							
+									System.out.println("Combien de cartes voulez-vous défausser ?");
+									int nbCardToBurn = sc1.nextInt();
+									if (nbCardToBurn < player.getJob().getNbMaxCardBurnable())
+									{
+										int bonusHit = player.getJob().getBonus() * nbCardToBurn;
+										player.setStrength(player.getStrength() + bonusHit);
+									}
+								}
 							}
 						}
 						String nameRace = player.getRace().getName();
-						int test2 = nameRace.compareTo("dwarf");
+						int test2 = nameRace.compareTo("DWARF");
 						if (test2 > 0)
 						{
-							player.setStrength(player.getStrength() + 1);	
+							FightTab.readMonster().setLevel(FightTab.readMonster().getLevel() - 1);
 						}							
 						System.out.println(player.toString());
 						compare = "OUI".compareTo(response);
@@ -249,7 +269,6 @@ public class Game
 		public void askHelpToFight(String help, Monster monster)
 		{
 			Player playerOfTheFight = FightTab.readPlayer();
-			Player helperOfTheFight = FightTab.readHelper();
 			switch (help)
 			{
 			case "OUI":
@@ -257,14 +276,13 @@ public class Game
 				Scanner sc1 = new Scanner(System.in);
 				String nickname;
 				nickname = sc1.nextLine();
-				nickname.toUpperCase();
 				for (int i = 0; i < Munchkin.getNbPlayer(); i++)
 				{
-					if (nickname == Munchkin.getTabOfPlayers()[i].getPseudo().toUpperCase())
+					int compare2 = nickname.compareTo(Munchkin.getTabOfPlayers()[i].getPseudo());
+					if (compare2 == 0)
 						{
 							System.out.println(nickname + ", êtes vous OK pour aider " + playerOfTheFight.getPseudo() + "?");
 							String ok = sc1.nextLine();
-							ok.toUpperCase();
 							switch (ok)
 							{
 								case "OUI":
@@ -275,25 +293,56 @@ public class Game
 						}
 						
 				}
-				this.addBufferToPlayer(playerOfTheFight);
-				this.addBufferToPlayer(helperOfTheFight);
-				if (playerOfTheFight.getStrength() + helperOfTheFight.getStrength() > monster.getLevel())
+				if (FightTab.readHelper() != null)
 				{
-					FightTab.editIsWin(true);
+					Player helperOfTheFight = FightTab.readHelper();
+					this.addBufferToPlayer(playerOfTheFight);
+					this.addBufferToPlayer(helperOfTheFight);
+					if (playerOfTheFight.getStrength() + helperOfTheFight.getStrength() > monster.getLevel())
+						{
+							FightTab.editIsWin(true);
+						}
+					else
+						{
+							FightTab.editIsWin(false);
+						}
+					String jobPlayer = playerOfTheFight.getClass().getName();
+					String jobHelper = helperOfTheFight.getClass().getName();
+					int test3 = jobPlayer.compareTo("Warrior");
+					int test4 = jobHelper.compareTo("Warrior");
+					if (test3 == 0 || test4 == 0)
+						{
+							if (playerOfTheFight.getStrength() == monster.getLevel())
+								{
+									FightTab.editIsWin(true);
+								}
+						}
+					FightTab.readPlayer().setLevel(FightTab.getLevelBeforeP());
+					FightTab.readHelper().setLevel(FightTab.getLevelBeforeH());
 				}
 				else
 				{
-					FightTab.editIsWin(false);
-				}
-				String jobPlayer = playerOfTheFight.getClass().getName();
-				int test3 = jobPlayer.compareTo("Warrior");
-				if (test3 == 0)
-				{
-					if (playerOfTheFight.getStrength() == monster.getLevel())
+					this.addBufferToPlayer(playerOfTheFight);
+					if (playerOfTheFight.getStrength() > monster.getLevel())
+						{
+							FightTab.editIsWin(true);
+						}
+						else
+						{
+							FightTab.editIsWin(false);
+						}
+					String jobPlayer = playerOfTheFight.getClass().getName();
+					int test4 = jobPlayer.compareTo("Warrior");
+					if (test4 == 0)
 					{
-						FightTab.editIsWin(true);
+						if (playerOfTheFight.getStrength() == monster.getLevel())
+						{
+							FightTab.editIsWin(true);
+						}
 					}
+					Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].setLevel(FightTab.getLevelBeforeP());	
 				}
+				PhaseDungeonCard1.setToFight(true);
 				
 			case "NON":
 				FightTab.editHelper(null);
@@ -306,7 +355,7 @@ public class Game
 					{
 						FightTab.editIsWin(false);
 					}
-				jobPlayer = playerOfTheFight.getClass().getName();
+				String jobPlayer = playerOfTheFight.getClass().getName();
 				int test4 = jobPlayer.compareTo("Warrior");
 				if (test4 == 0)
 				{
@@ -315,6 +364,8 @@ public class Game
 						FightTab.editIsWin(true);
 					}
 				}
+				Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].setLevel(FightTab.getLevelBeforeP());
+				PhaseDungeonCard1.setToFight(true);
 			}
 		}
 		
@@ -362,7 +413,7 @@ public class Game
 		 */
 		public int calculateGainHelper(int monsterGain ,Player helper)
 		{
-			if(helper.getRace().getName() == "Elf")
+			if(helper.getRace().getName() == "ELF")
 				return (monsterGain/2) +1;
 			return monsterGain/2;
 		}

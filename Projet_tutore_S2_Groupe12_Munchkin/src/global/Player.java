@@ -159,28 +159,19 @@ public class Player
 		 */
 		public void equipEquipment(String name)
 			{
-				ListIterator<Card> iterator = this.hand.getHandPlayer()
-						.listIterator();
+				ListIterator<Card> iterator = this.hand.getHandPlayer().listIterator();
 				while (iterator.hasNext())
 					{
 						int compare = name.compareTo(iterator.next().getName());
 						if (compare == 0)
 							{
-								if (this.hand.getHandPlayer().get(
-										iterator.previousIndex()) instanceof Equipment)
+								if (this.hand.getHandPlayer().get(iterator.previousIndex()) instanceof Equipment)
 									{
-										Equipment currentCarte = (Equipment) this.hand
-												.getHandPlayer()
-												.get(iterator.previousIndex());
-										this.playerEquipment.getEquipment()
-												.add(currentCarte);
-										this.playerEquipment
-												.setBonusTotal(this.playerEquipment
-														.getBonusTotal()
-														+ currentCarte
-																.getBonus());
-										this.updateStrength(currentCarte
-												.getBonus());
+										Equipment currentCard = (Equipment) this.hand.getHandPlayer().get(iterator.previousIndex());
+										this.playerEquipment.getEquipment().add(currentCard);
+										this.playerEquipment.setBonusTotal(this.playerEquipment.getBonusTotal() + currentCard.getBonus());
+										this.updateStrength(currentCard.getBonus());
+										this.hand.getHandPlayer().remove(currentCard);
 										return;
 									}
 
@@ -264,8 +255,7 @@ public class Player
 		 */
 		public void discardPerName(String name)
 			{
-				ListIterator<Card> iterator = this.hand.getHandPlayer()
-						.listIterator();
+				ListIterator<Card> iterator = this.hand.getHandPlayer().listIterator();
 
 				while (iterator.hasNext())
 					{

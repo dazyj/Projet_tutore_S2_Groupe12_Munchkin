@@ -10,7 +10,7 @@ package global.card.dungeon_card.enumeration;
 public enum RaceSpecification
 	{
 
-		human("Human"), dwarf("Dwarf"), elf("Elf");
+		human("HUMAN"), dwarf("DWARF"), elf("ELF");
 		private final String name;
 
 		private RaceSpecification(String name)

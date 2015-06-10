@@ -34,10 +34,10 @@ public class Move
 		public static void start()
 		{
 			nbMove++;
-			if (idPlayersMove < Munchkin.getNbPlayer())
+			if (idPlayersMove < Munchkin.getNbPlayer() - 1)
 				idPlayersMove++;
 			else 
-				idPlayersMove = -1;
+				idPlayersMove = 0;
 			Player playerMove = Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()];
 			System.out.println(playerMove.getHand().getHandPlayer().toString());
 			PhaseDungeonCard1.start();

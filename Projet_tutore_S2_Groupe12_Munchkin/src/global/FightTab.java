@@ -31,8 +31,32 @@ public class FightTab
 		 * The boolean that tell if the fight is win or not.
 		 */
 		private static boolean isWin;
+		
+		private static int levelBeforeConsumnPlayer;
+		
+		private static int levelBeforeConsumnHelper;
 
-
+		
+		public static void setLevelBeforeP(int lvl)
+		{
+			levelBeforeConsumnPlayer = lvl;
+		}
+		
+		public static void setLevelBeforeH(int lvl)
+		{
+			levelBeforeConsumnHelper = lvl;
+		}
+		
+		public static int getLevelBeforeP()
+		{
+			return levelBeforeConsumnPlayer;
+		}
+		
+		public static int getLevelBeforeH()
+		{
+			return levelBeforeConsumnHelper;
+		}
+		
 		/**
 		 * Edit the player of FightTab.
 		 * @param pPlayer
