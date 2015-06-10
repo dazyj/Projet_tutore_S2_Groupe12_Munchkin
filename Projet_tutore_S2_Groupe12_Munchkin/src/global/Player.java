@@ -1,12 +1,9 @@
 package global;
 
-import global.*;
 import global.card.*;
 import global.card.dungeon_card.*;
 import global.card.dungeon_card.enumeration.*;
 import global.card.treasure_card.*;
-import global.card.treasure_card.enumeration.*;
-
 import java.util.*;
 
 /**
@@ -116,6 +113,7 @@ public class Player
 		public void sendCardHand(Card card)
 			{
 					{
+						card.setHiddenFace(true);
 						this.hand.getHandPlayer().add(card);
 					}
 
@@ -140,7 +138,9 @@ public class Player
 			{
 				if (this.hand.getHandPlayer().size() < this.hand.getNbMaxCard())
 					{
-						this.hand.getHandPlayer().add(heap.RemoveFirstCard());
+						Card cardRemove = heap.RemoveFirstCard();
+						cardRemove.setHiddenFace(true);
+						this.hand.getHandPlayer().add(cardRemove);
 					}
 			}
 

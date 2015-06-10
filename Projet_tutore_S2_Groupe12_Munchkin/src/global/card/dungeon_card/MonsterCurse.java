@@ -47,5 +47,18 @@ public class MonsterCurse extends DungeonCard
 				monster.setTreasureGain(monster.getTreasureGain()
 						+ this.treasureCardEffect);
 			}
+		
+		@Override
+		public String toString()
+		{
+			if(this.getHiddenFace())
+				{
+					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus du monstre :"+this.monsterLevelEffect +", bonus en gain :"+this.treasureCardEffect+")";
+				}
+			else
+				{
+					return "["+this.getType()+"]";
+				}
+		}
 
 	}

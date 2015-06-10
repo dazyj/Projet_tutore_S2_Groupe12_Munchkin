@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
-import global.card.Card;
 import global.card.treasure_card.*;
 
 /**

@@ -37,6 +37,19 @@ public class ConsumableItem extends TreasureCard
 					return bonus;
 			}
 		
+		@Override
+        public String toString()
+        {
+                if(this.getHiddenFace())
+                        {
+                                return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus :"+this.bonus +")";
+                        }
+                else
+                        {
+                                return "["+this.getType()+"]";
+                        }
+                
+        }
 		
 
 	}

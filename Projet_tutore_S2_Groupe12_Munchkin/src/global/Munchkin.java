@@ -1,11 +1,12 @@
 package global;
 
-import global.*;
-import global.card.*;
-import global.card.dungeon_card.*;
-import global.card.dungeon_card.enumeration.*;
-import global.card.treasure_card.*;
-import global.card.treasure_card.enumeration.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import global.card.DungeonCard;
+import global.card.treasure_card.Equipment;
+import global.card.treasure_card.enumeration.EquipmentSpecification;
 
 //TODO JAAVADOC
 //TODO TOSTRING
@@ -43,19 +44,9 @@ public class Munchkin
 	 */
 	public static void main(String[] args)
 	{
-		Equipment test2 = new Equipment(EquipmentSpecification.sword_of_bastard);
 		System.out.println("Bienvenue dans le Munchkin, nous allons procéder à la création d'une nouvelle partie.");
-		PlayerEquipment test = new PlayerEquipment();
-		Player player = new Player("Joe");
-		player.getHand().getHandPlayer().add(test2);
-		test2.setHiddenFace(true);
-		player.getHand().getHandPlayer().add(test2);
-		player.equipEquipment("bastard (of) sword");
-		test2.setHiddenFace(true);
-		System.out.println(player.toString());
-		
-		//nbPlayer = IHMPlayer.selectNbPlayers();
-		//createGame();
+		nbPlayer = IHMPlayer.selectNbPlayers();
+		createGame();
 	}
 
 	/**
@@ -67,12 +58,16 @@ public class Munchkin
 		tabOfPlayers = new Player[Munchkin.nbPlayer];
 		
 		for (int i = 0; i < Munchkin.nbPlayer; i++)
-		{
-			Player temp = new Player(IHMPlayer.selectPseudo());
+		{	
+			String name = IHMPlayer.selectPseudo();
+			Player temp = new Player(name);
 			tabOfPlayers[i] = temp;
 			tabOfPlayers[i].asertId(i);
 		}
-		
+		CreateHeapDungeon();
+		Collections.shuffle(gameOfMunchkin.getDungeonHeap().getDeck());
+		CreateHeapTreasure();
+		Collections.shuffle(gameOfMunchkin.getTreasureHeap().getDeck());
 		gameOfMunchkin.start();
 	}
 	

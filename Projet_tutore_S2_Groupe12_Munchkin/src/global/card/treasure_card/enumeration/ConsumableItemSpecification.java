@@ -23,7 +23,7 @@ public enum ConsumableItemSpecification
 			{
 					return bonus;
 			}
-		
+
 		
 
 	}

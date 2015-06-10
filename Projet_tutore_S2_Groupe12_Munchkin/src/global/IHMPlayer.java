@@ -22,7 +22,6 @@ public class IHMPlayer
 		Scanner sc1 = new Scanner(System.in);
 		int nbPlayer;
 		nbPlayer = sc1.nextInt();
-		sc1.close();
 		return nbPlayer;
 	}
 	
@@ -34,11 +33,11 @@ public class IHMPlayer
 	public static String selectPseudo()
 	{
 		System.out.println("Sélectionnez le pseudo du joueur.");
-		Scanner sc1 = new Scanner(System.in);
+		Scanner sc2 = new Scanner(System.in);
 		String nickname;
-		nickname = sc1.nextLine();
-		sc1.close();
+		nickname = sc2.nextLine();
 		return nickname;
+		
 	}
 	
 }

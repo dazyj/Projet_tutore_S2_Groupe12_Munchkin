@@ -24,14 +24,32 @@ public class Race extends DungeonCard
 				this.category = DungeonCardCategory.race.getName();
 			}
 
-		public void power(String name)
-			{
-				
-			}
 
 		public String getCategory()
 			{
 				return this.category;
 			}
+		
+		@Override
+		public String toString()
+		{
+			if(this.getHiddenFace())
+				{
+					switch(this.getName())
+					{
+						case ("Elf") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( vous gagnez plus 1 niveaux par combat )";
+						case ("Dwarf") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( vous gagnez plus 1 de force en combat )";
+						case ("Human") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( vous êtes nul )";
+						case ("Noob") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( le nom parle de lui même )";
+					}
+						
+					
+				}
+			else
+				{
+					return "["+this.getType()+"]";
+				}
+			return null;
+		}
 
 	}

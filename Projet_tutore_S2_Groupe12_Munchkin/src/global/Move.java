@@ -1,11 +1,5 @@
 package global;
 
-import global.*;
-import global.card.*;
-import global.card.dungeon_card.*;
-import global.card.dungeon_card.enumeration.*;
-import global.card.treasure_card.*;
-import global.card.treasure_card.enumeration.*;
 
 /**
  * A move is an iteration of a scenario constitued of 3 phases.
@@ -44,13 +38,15 @@ public class Move
 				idPlayersMove++;
 			else 
 				idPlayersMove = -1;
-			// TODO AFficher les cartes de la main
+			Player playerMove = Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()];
+			System.out.println(playerMove.getHand().getHandPlayer().toString());
 			PhaseDungeonCard1.start();
-			// TODO AFficher les cartes de la main
+			System.out.println(playerMove.getHand().getHandPlayer().toString());
 			PhaseConsequences.start();
-			// TODO AFficher les cartes de la main
+			System.out.println(playerMove.getHand().getHandPlayer().toString());
 			PhasePersonnalPhase.start();
-			// TODO AFficher les cartes de la main
+			System.out.println(playerMove.getHand().getHandPlayer().toString());
+			System.out.println(playerMove.toString());
 
 		}
 		

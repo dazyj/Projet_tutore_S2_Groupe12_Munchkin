@@ -1,16 +1,9 @@
 package global;
 
 import global.card.Card;
-import global.card.treasure_card.Equipment;
-import global.*;
-import global.card.*;
-import global.card.dungeon_card.*;
-import global.card.dungeon_card.enumeration.*;
-import global.card.treasure_card.*;
-import global.card.treasure_card.enumeration.*;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * The hand of a player. 
@@ -56,6 +49,18 @@ public class HandPlayer
 		public int getNbMaxCard()
 		{
 			return this.maximumNumberCard;
+		}
+		
+		@Override
+		public String toString()
+		{
+			String ch ="";
+			ListIterator<Card> iterator = this.getHandPlayer().listIterator();
+			while(iterator.hasNext())
+				{
+					ch = ch + "|" +iterator.next().toString() + "| \n ";
+				}
+			return ch;
 		}
 
 

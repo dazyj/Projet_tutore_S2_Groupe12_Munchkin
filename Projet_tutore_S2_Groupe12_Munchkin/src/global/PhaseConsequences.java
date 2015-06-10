@@ -1,14 +1,5 @@
 package global;
 
-import java.util.Random;
-import java.util.Scanner;
-
-import global.*;
-import global.card.*;
-import global.card.dungeon_card.*;
-import global.card.dungeon_card.enumeration.*;
-import global.card.treasure_card.*;
-import global.card.treasure_card.enumeration.*;
 
 /**
  * The Phase Consequences of a Move.

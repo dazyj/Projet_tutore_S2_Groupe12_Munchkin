@@ -21,11 +21,6 @@ public class CardCurse extends DungeonCard
 				this.numberCardRemove = name.getNumberCardRemove();
 			}
 		
-		public void useCurse( HandPlayer handOtherPlayer)
-		{
-			
-			
-		}
 
 		public DungeonCardCategory getCategory()
 			{
@@ -36,6 +31,19 @@ public class CardCurse extends DungeonCard
 			{
 					return this.numberCardRemove;
 			}
+		
+		@Override
+		public String toString()
+		{
+			if(this.getHiddenFace())
+				{
+					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"(remove :"+this.numberCardRemove +" Card )";
+				}
+			else
+				{
+					return "["+this.getType()+"]";
+				}
+		}
 		
 		
 

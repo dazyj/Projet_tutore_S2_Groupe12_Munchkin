@@ -1,11 +1,7 @@
 package global;
 
-import global.*;
-import global.card.*;
-import global.card.dungeon_card.*;
-import global.card.dungeon_card.enumeration.*;
-import global.card.treasure_card.*;
-import global.card.treasure_card.enumeration.*;
+import global.card.Card;
+import global.card.CardType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +53,9 @@ public class Heap
 		 */
 		public Card RemoveFirstCard()
 			{
+				this.deck.get(0).setHiddenFace(true);
 				return this.deck.remove(0);
+				
 			}
 
 		/**
