@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import global.card.Card;
 import global.card.treasure_card.*;
 
 /**
@@ -58,6 +59,18 @@ public class PlayerEquipment
 		public void setBonusTotal(int bonusTotal)
 			{
 					this.bonusTotal = bonusTotal;
+			}
+		
+		public String toString()
+			{
+				String ch ="";
+				ListIterator<Equipment> iterator = this.playerEquipement.listIterator();
+				while(iterator.hasNext())
+					{
+						ch = ch + "|" +iterator.next().toString() + "|";
+					}
+				return ch;
+
 			}
 
 

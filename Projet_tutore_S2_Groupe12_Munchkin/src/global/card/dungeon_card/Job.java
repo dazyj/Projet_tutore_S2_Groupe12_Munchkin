@@ -17,12 +17,12 @@ public class Job extends DungeonCard
 				
 		private final int nbMaxCardBurnable;
 
-		public Job(JobSpecification name, int bonus, int nbCard, int nbMax)
+		public Job(JobSpecification name)
 			{
 				super(name.getName());
 				this.category = DungeonCardCategory.job.getName();
-				this.bonus = bonus;
-				this.nbMaxCardBurnable = nbMax;
+				this.bonus = name.getBonus();
+				this.nbMaxCardBurnable = name.getNbMaxCardBurnable();
 			}
 
 

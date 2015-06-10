@@ -11,10 +11,7 @@ import global.card.treasure_card.enumeration.TreasureCardCategory;
  */
 public class Equipment extends TreasureCard
 	{
-
 		private final String category;
-
-		private final String categoryEquipment;
 
 		private final int bonus;
 
@@ -28,7 +25,6 @@ public class Equipment extends TreasureCard
 			{
 				super(equipment.getName());
 				this.category = TreasureCardCategory.equipment.getName();
-				this.categoryEquipment = equipment.getCategoryEquipment();
 				this.bonus = equipment.getBonus();
 				this.value = equipment.getValue();
 
@@ -49,10 +45,19 @@ public class Equipment extends TreasureCard
 				return this.value;
 			}
 
-		public String getCategoryEquipment()
-			{
-				return categoryEquipment;
-			}
+		@Override
+		public String toString()
+		{
+			if(this.getHiddenFace())
+				{
+					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus :"+this.bonus +", Valeur :"+this.value+" )";
+				}
+			else
+				{
+					return "["+this.getType()+"]";
+				}
+			
+		}
 
 //		
 

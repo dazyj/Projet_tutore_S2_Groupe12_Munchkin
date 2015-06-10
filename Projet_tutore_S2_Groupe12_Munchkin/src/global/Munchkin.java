@@ -43,10 +43,19 @@ public class Munchkin
 	 */
 	public static void main(String[] args)
 	{
-		
+		Equipment test2 = new Equipment(EquipmentSpecification.sword_of_bastard);
 		System.out.println("Bienvenue dans le Munchkin, nous allons procéder à la création d'une nouvelle partie.");
-		nbPlayer = IHMPlayer.selectNbPlayers();
-		createGame();
+		PlayerEquipment test = new PlayerEquipment();
+		Player player = new Player("Joe");
+		player.getHand().getHandPlayer().add(test2);
+		test2.setHiddenFace(true);
+		player.getHand().getHandPlayer().add(test2);
+		player.equipEquipment("bastard (of) sword");
+		test2.setHiddenFace(true);
+		System.out.println(player.toString());
+		
+		//nbPlayer = IHMPlayer.selectNbPlayers();
+		//createGame();
 	}
 
 	/**

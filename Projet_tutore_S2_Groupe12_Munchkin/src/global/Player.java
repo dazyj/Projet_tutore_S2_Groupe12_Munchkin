@@ -10,9 +10,10 @@ import global.card.treasure_card.enumeration.*;
 import java.util.*;
 
 /**
- * A player of the game.
- * It represent the person that play to the game AND the personage that they are in the game.
- * A player has some stats and characteristics that represents him and resolve many situations.
+ * A player of the game. It represent the person that play to the game AND the
+ * personage that they are in the game. A player has some stats and
+ * characteristics that represents him and resolve many situations.
+ * 
  * @author dazyj
  *
  */
@@ -43,7 +44,7 @@ public class Player
 		 * The race of the player.
 		 */
 		private Race race;
-		
+
 		/**
 		 * The job of the player.
 		 */
@@ -60,10 +61,10 @@ public class Player
 		private int money;
 
 		/**
-		 * The equipment of a player. It can increase his strength during a fight.
+		 * The equipment of a player. It can increase his strength during a
+		 * fight.
 		 */
 		private PlayerEquipment playerEquipment;
-		
 
 		/**
 		 * Create a new player with his pseudo.
@@ -75,13 +76,14 @@ public class Player
 				/**
 				 * The name that the player use during the Game.
 				 */
-				this.race = null;
+				this.race = new Race(RaceSpecification.human);
 				this.pseudo = pseudo;
 				this.hand = new HandPlayer();
 				this.level = 1;
 				this.strength = this.level;
 				this.money = 0;
 				this.playerEquipment = new PlayerEquipment();
+				this.job = new Job(JobSpecification.Noob);
 			}
 
 		/**
@@ -98,13 +100,13 @@ public class Player
 						int compare = name.compareTo(iterator.next().getName());
 						if (compare == 0)
 							{
-								return this.hand.getHandPlayer().remove(iterator.previousIndex());
+								return this.hand.getHandPlayer().remove(
+										iterator.previousIndex());
 							}
 					}
 				return null;
 
 			}
-
 
 		/**
 		 * The method that send a card to the hand of the player.
@@ -136,22 +138,24 @@ public class Player
 		 */
 		public void sendCard(Heap heap)
 			{
-				if (this.hand.getHandPlayer().size() < this.hand
-						.getNbMaxCard())
+				if (this.hand.getHandPlayer().size() < this.hand.getNbMaxCard())
 					{
 						this.hand.getHandPlayer().add(heap.RemoveFirstCard());
 					}
 			}
+
 		public void updateLevel(int numberLevelChange)
-		{
-			this.level = (this.level + numberLevelChange);
-		}
-		
-/**
- * this method can be search a card in the {@link HandPlayer}, move in the {@link PlayerEquipment}.
- * this method update the bonusTotal to player
- * @param name
- */
+			{
+				this.level = (this.level + numberLevelChange);
+			}
+
+		/**
+		 * this method can be search a card in the {@link HandPlayer}, move in
+		 * the {@link PlayerEquipment}. this method update the bonusTotal to
+		 * player
+		 * 
+		 * @param name
+		 */
 		public void equipEquipment(String name)
 			{
 				ListIterator<Card> iterator = this.hand.getHandPlayer()
@@ -161,42 +165,58 @@ public class Player
 						int compare = name.compareTo(iterator.next().getName());
 						if (compare == 0)
 							{
-								if(this.hand.getHandPlayer().get(iterator.previousIndex()) instanceof Equipment)
+								if (this.hand.getHandPlayer().get(
+										iterator.previousIndex()) instanceof Equipment)
 									{
-										Equipment currentCarte = (Equipment)this.hand.getHandPlayer().get(iterator.previousIndex());
-										this.playerEquipment.getEquipment().add(currentCarte);	
-										this.playerEquipment.setBonusTotal(this.playerEquipment.getBonusTotal() + currentCarte.getBonus());
-										this.updateStrength(currentCarte.getBonus());
+										Equipment currentCarte = (Equipment) this.hand
+												.getHandPlayer()
+												.get(iterator.previousIndex());
+										this.playerEquipment.getEquipment()
+												.add(currentCarte);
+										this.playerEquipment
+												.setBonusTotal(this.playerEquipment
+														.getBonusTotal()
+														+ currentCarte
+																.getBonus());
+										this.updateStrength(currentCarte
+												.getBonus());
 										return;
 									}
 
 							}
 					}
 			}
+
 		/**
 		 * update the Strenght of the player when he equip or sell his item.
+		 * 
 		 * @param StrengthEffect
 		 */
 		public void updateStrength(int strengthEffect)
-		{
-			this.setStrength(this.getStrength() + strengthEffect);
-		}
+			{
+				this.setStrength(this.getStrength() + strengthEffect);
+			}
 
 		/**
-		 * this method search a {@link Card} with a name, and sell it against the money
-		 * this method update the level to a player when he have 1000 money.
+		 * this method search a {@link Card} with a name, and sell it against
+		 * the money this method update the level to a player when he have 1000
+		 * money.
+		 * 
 		 * @param name
 		 */
 		public void SellEquipment(String name)
 			{
-				ListIterator<Equipment> iterator = this.playerEquipment.getEquipment().listIterator();
+				ListIterator<Equipment> iterator = this.playerEquipment
+						.getEquipment().listIterator();
 
 				while (iterator.hasNext())
 					{
 						int compare = name.compareTo(iterator.next().getName());
 						if (compare == 0)
 							{
-								Equipment currentCard = (Equipment)this.hand.getHandPlayer().get(iterator.previousIndex());
+								Equipment currentCard = (Equipment) this.hand
+										.getHandPlayer().get(
+												iterator.previousIndex());
 								this.money += +iterator.previous().getValue();
 								this.updateStrength(-currentCard.getBonus());
 								if (this.money >= 1000)
@@ -210,34 +230,41 @@ public class Player
 							}
 					}
 			}
-		
+
 		/**
-		 * Unequip a player from an equipment. 
+		 * Unequip a player from an equipment.
+		 * 
 		 * @param name
 		 */
 		public void unequip(String name)
 			{
-				ListIterator<Equipment> iterator = this.playerEquipment.getEquipment().listIterator();
+				ListIterator<Equipment> iterator = this.playerEquipment
+						.getEquipment().listIterator();
 
 				while (iterator.hasNext())
 					{
 						int compare = name.compareTo(iterator.next().getName());
 						if (compare == 0)
 							{
-								Equipment currentCard = (Equipment)this.getPlayerEquipment().getEquipment().remove(iterator.previousIndex());
+								Equipment currentCard = (Equipment) this
+										.getPlayerEquipment().getEquipment()
+										.remove(iterator.previousIndex());
 								this.updateStrength(-currentCard.getBonus());
 								this.hand.getHandPlayer().add(currentCard);
-								
+
 							}
 					}
 			}
+
 		/**
 		 * Discard a card in the hand of the player by using his name.
+		 * 
 		 * @param name
 		 */
 		public void discardPerName(String name)
 			{
-				ListIterator<Card> iterator = this.hand.getHandPlayer().listIterator();
+				ListIterator<Card> iterator = this.hand.getHandPlayer()
+						.listIterator();
 
 				while (iterator.hasNext())
 					{
@@ -251,6 +278,7 @@ public class Player
 
 		/**
 		 * return the id of a player
+		 * 
 		 * @return
 		 */
 		public int getId()
@@ -260,15 +288,17 @@ public class Player
 
 		/**
 		 * asert a id to the player.
+		 * 
 		 * @param i
 		 */
 		public void asertId(int i)
 			{
 				this.idPlayer = i;
 			}
-		
+
 		/**
 		 * return the level.
+		 * 
 		 * @return
 		 */
 		public int getLevel()
@@ -278,42 +308,47 @@ public class Player
 
 		/**
 		 * return the race
+		 * 
 		 * @return
 		 */
 		public Race getRace()
 			{
 				return this.race;
 			}
-		
+
 		/**
 		 * return the job.
+		 * 
 		 * @return
 		 */
 		public Job getJob()
-		{
-			return this.job;
-		}
+			{
+				return this.job;
+			}
 
 		/**
 		 * set the race.
+		 * 
 		 * @param race
 		 */
 		public void setRace(Race race)
 			{
 				this.race = race;
 			}
-		
+
 		/**
 		 * set the job
+		 * 
 		 * @param job
 		 */
 		public void setJob(Job job)
-		{
-			this.job = job;
-		}
+			{
+				this.job = job;
+			}
 
 		/**
 		 * return the pseudo.
+		 * 
 		 * @return
 		 */
 		public String getPseudo()
@@ -323,6 +358,7 @@ public class Player
 
 		/**
 		 * return the hand.
+		 * 
 		 * @return
 		 */
 		public HandPlayer getHand()
@@ -332,6 +368,7 @@ public class Player
 
 		/**
 		 * return the strength.
+		 * 
 		 * @return
 		 */
 		public int getStrength()
@@ -341,6 +378,7 @@ public class Player
 
 		/**
 		 * set the strength.
+		 * 
 		 * @param strength
 		 */
 		public void setStrength(int strength)
@@ -350,6 +388,7 @@ public class Player
 
 		/**
 		 * return the equipment.
+		 * 
 		 * @return
 		 */
 		public PlayerEquipment getPlayerEquipment()
@@ -359,29 +398,33 @@ public class Player
 
 		/**
 		 * set the level.
+		 * 
 		 * @param newLevel
 		 */
 		public void setLevel(int newLevel)
 			{
 				this.level = newLevel;
-				
+
 			}
-		
+
 		private int getMoney()
 			{
 				return this.money;
 			}
-		
+
 		@Override
 		public String toString()
-		{
-			String ch = "";
-			ch = ch + " [" +this.getPseudo() + "] : Strength : ("+this.getStrength()+") Level : (" +this.getLevel()+") Race : ("+this.getRace().getName()+") Job : ("+this.getJob().getName()+") Money : ("+this.getMoney()+")";
-			String ch2 = " [" +this.getPseudo() + "] : Equipment : (" + this.getPlayerEquipment().toString();
-			return ch = ch + ch2;	
-				
-		}
+			{
+				String ch = "";
+				ch = ch + " [" + this.getPseudo() + "] : Strength : ("
+						+ this.getStrength() + ") Level : (" + this.getLevel()
+						+ ") Race : (" + this.getRace().getName() + ") Job : ("
+						+ this.getJob().getName() + ") Money : ("
+						+ this.getMoney() + ") \n";
+				ch = ch + " [" + this.getPseudo() + "] : Equipment : "
+						+ this.getPlayerEquipment().toString();
+				return ch;
 
-		
+			}
 
 	}

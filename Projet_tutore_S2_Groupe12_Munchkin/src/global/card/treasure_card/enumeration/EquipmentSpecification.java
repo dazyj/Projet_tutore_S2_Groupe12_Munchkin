@@ -6,21 +6,17 @@ package global.card.treasure_card.enumeration;
  */
 public enum EquipmentSpecification
 	{
-		sword_of_bastard("bastard (of) sword",CategoryEquipment.weapon_one_hand.getName(),2,400);
+		sword_of_bastard("bastard (of) sword",2,400);
 
 		private final String name;
-		
-		private final String categoryEquipment;
 		
 		private final int bonus;
 		
 		private final int value;
 
-		private EquipmentSpecification(String name, String categoryEquipment,
-				int bonus, int value)
+		private EquipmentSpecification(String name,int bonus, int value)
 			{
 				this.name = name;
-				this.categoryEquipment = categoryEquipment;
 				this.bonus = bonus;
 				this.value = value;
 			}
@@ -30,10 +26,6 @@ public enum EquipmentSpecification
 					return this.name;
 			}
 
-		public String getCategoryEquipment()
-			{
-					return this.categoryEquipment;
-			}
 
 		public int getBonus()
 			{
