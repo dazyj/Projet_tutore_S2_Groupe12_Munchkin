@@ -366,5 +366,22 @@ public class Player
 				this.level = newLevel;
 				
 			}
+		
+		private int getMoney()
+			{
+				return this.money;
+			}
+		
+		@Override
+		public String toString()
+		{
+			String ch = "";
+			ch = ch + " [" +this.getPseudo() + "] : Strength : ("+this.getStrength()+") Level : (" +this.getLevel()+") Race : ("+this.getRace().getName()+") Job : ("+this.getJob().getName()+") Money : ("+this.getMoney()+")";
+			String ch2 = " [" +this.getPseudo() + "] : Equipment : (" + this.getPlayerEquipment().toString();
+			return ch = ch + ch2;	
+				
+		}
+
+		
 
 	}

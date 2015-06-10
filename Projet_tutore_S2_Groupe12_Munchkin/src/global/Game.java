@@ -235,7 +235,7 @@ public class Game
 						{
 							player.setStrength(player.getStrength() + 1);	
 						}							
-						// TODO Afficher Player
+						System.out.println(player.toString());
 						compare = "OUI".compareTo(answer);
 					case "NON":
 						compare = "OUI".compareTo(answer);
