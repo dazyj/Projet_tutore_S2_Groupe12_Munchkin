@@ -93,4 +93,20 @@ public class Munchkin
 	{
 		return gameOfMunchkin;
 	}
+	
+	public static void  CreateHeapDungeon()
+        {
+        	gameOfMunchkin.createAllCardCurse();
+            gameOfMunchkin.createAllCardJob();
+            gameOfMunchkin.createAllCardMonster();
+            gameOfMunchkin.createAllCardMonsterCurse();
+            gameOfMunchkin.createAllCardRace();        
+        }
+        
+        public static void CreateHeapTreasure()
+        {
+            gameOfMunchkin.createAllCardEquipment();
+            gameOfMunchkin.createAllCardConsumableItem();
+            gameOfMunchkin.createAllCardLevelEffect();
+        }
 }

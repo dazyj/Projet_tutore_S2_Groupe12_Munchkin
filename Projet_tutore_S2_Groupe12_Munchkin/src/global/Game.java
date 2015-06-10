@@ -336,7 +336,7 @@ public class Game
 			FightTab.editIsWin(false);
 			FightTab.editPlayer(this.identifyPlayerById(Move.getIdPlayersMove()));
 			FightTab.editMonster(monster);
-			// TODO Afficher Monstre
+			System.out.println(monster.toString());
 			this.addBuffToMonster(monster);
 			
 			System.out.println("Voulez-vous qu'un joueur vous aide ?");
@@ -406,4 +406,84 @@ public class Game
 			else
 				return false;
 		}
+		
+		public void createAllCardMonster()
+            {
+                    MonsterSpecification[] myPossibleMonster =MonsterSpecification.values();
+                    for(int indexTableau = 0; indexTableau < myPossibleMonster.length; indexTableau++ )
+                    {
+                            Munchkin.getGameOfMunchkin().getDungeonHeap().getDeck().add(new Monster(myPossibleMonster[indexTableau]));
+                    }
+            }
+            /**
+             * 
+             */
+            public void createAllCardCurse()
+                    {
+                            CardCurseSpecification[] myPossibleCardCurse =CardCurseSpecification.values();
+                            for(int indexTableau = 0; indexTableau < myPossibleCardCurse.length; indexTableau++ )
+                            {
+                                    Munchkin.getGameOfMunchkin().getDungeonHeap().getDeck().add(new CardCurse(myPossibleCardCurse[indexTableau]));
+                            }
+                    }
+            /**
+             * 
+             */
+            public void createAllCardJob()
+                    {
+                            JobSpecification[] myPossibleJob =JobSpecification.values();
+                            for(int indexTableau = 0; indexTableau < myPossibleJob.length; indexTableau++ )
+                            {
+                                    Munchkin.getGameOfMunchkin().getDungeonHeap().getDeck().add(new Job(myPossibleJob[indexTableau]));
+                            }
+                    }
+            /**
+             * 
+             */
+            public void createAllCardMonsterCurse()
+                    {
+                            MonsterCurseSpecification[] myPossibleMonsterCurse =MonsterCurseSpecification.values();
+                            for(int indexTableau = 0; indexTableau < myPossibleMonsterCurse.length; indexTableau++ )
+                            {
+                                    Munchkin.getGameOfMunchkin().getDungeonHeap().getDeck().add(new MonsterCurse(myPossibleMonsterCurse[indexTableau]));
+                            }
+                    }
+            /**
+             * 
+             */
+            public void createAllCardRace()
+                    {
+                            RaceSpecification[] myPossibleRace =RaceSpecification.values();
+                            for(int indexTableau = 0; indexTableau < myPossibleRace.length; indexTableau++ )
+                            {
+                                    Munchkin.getGameOfMunchkin().getDungeonHeap().getDeck().add(new Race(myPossibleRace[indexTableau]));
+                            }
+                    }
+            public void createAllCardConsumableItem()
+                    {
+                            ConsumableItemSpecification[] myPossibleCards = ConsumableItemSpecification.values();
+                            for(int indexTableau = 0; indexTableau < myPossibleCards.length; indexTableau++ )
+                            {
+                                    Munchkin.getGameOfMunchkin().getTreasureHeap().getDeck().add(new ConsumableItem(myPossibleCards[indexTableau]));
+                            }
+                    }
+            
+            public void createAllCardEquipment()
+                    {
+                            EquipmentSpecification[] myPossibleCards = EquipmentSpecification.values();
+                            for(int indexTableau = 0; indexTableau < myPossibleCards.length; indexTableau++ )
+                            {
+                                    Munchkin.getGameOfMunchkin().getTreasureHeap().getDeck().add(new Equipment(myPossibleCards[indexTableau]));
+                            }
+                    }
+            
+            public void createAllCardLevelEffect()
+                    {
+                            LevelEffectSpecification[] myPossibleCards = LevelEffectSpecification.values();
+                            for(int indexTableau = 0; indexTableau < myPossibleCards.length; indexTableau++ )
+                            {
+                                    Munchkin.getGameOfMunchkin().getTreasureHeap().getDeck().add(new LevelEffect(myPossibleCards[indexTableau]));
+                            }
+                    }
+}
 }
