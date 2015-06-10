@@ -9,9 +9,19 @@ import global.card.dungeon_card.enumeration.*;
 import global.card.treasure_card.*;
 import global.card.treasure_card.enumeration.*;
 
+/**
+ * The Personnal phase of a Move.
+ * It is the phase where the players must manage their hand to have a maximum of 5 cards in.
+ * To do that they can do commerce with the others players or remove cards of their game, or sell cards to the game (to win level).
+ * @author dazyj
+ *
+ */
 public class PhasePersonnalPhase
 {
 
+	/**
+	 * Launch the phase.
+	 */
 	public static void start()
 	{
 			

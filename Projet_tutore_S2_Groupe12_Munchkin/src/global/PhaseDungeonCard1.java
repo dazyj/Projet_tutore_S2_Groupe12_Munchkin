@@ -9,10 +9,25 @@ import global.card.dungeon_card.enumeration.*;
 import global.card.treasure_card.*;
 import global.card.treasure_card.enumeration.*;
 
+/**
+ * The phase Dungeon Card 1 of a Move.
+ * This phase threat the events about the putting of the first Dungeon Card.
+ * IF it is a monster, we launch a fight.
+ * If it is a CardCurse, we apply the curse to the player.
+ * If it is a MonsterCurse, a Job or a Race, the player can put the card in his hand.
+ * @author Jérémie
+ *
+ */
 public class PhaseDungeonCard1
 {
+	/**
+	 * Boolean that determine if there had a fight during the phase.
+	 */
 	private static boolean toFight ;
 	
+	/**
+	 * Launch the phase.
+	 */
 	public static void start()
 	{
 		Player[] tabOfPlayers = Munchkin.getTabOfPlayers();
@@ -38,11 +53,19 @@ public class PhaseDungeonCard1
 		}
 	}
 	
+	/**
+	 * return toFight
+	 * @return
+	 */
 	public static boolean isToFight()
 	{
 		return toFight;
 	}
 	
+	/**
+	 * edit toFight.
+	 * @param toFight
+	 */
 	public static void setToFight(boolean toFight)
 	{
 		PhaseDungeonCard1.toFight = toFight;

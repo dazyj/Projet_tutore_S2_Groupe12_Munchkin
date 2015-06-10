@@ -10,9 +10,20 @@ import global.card.dungeon_card.enumeration.*;
 import global.card.treasure_card.*;
 import global.card.treasure_card.enumeration.*;
 
+/**
+ * The Phase Consequences of a Move.
+ * It is the phase just after a fight or the putting of the first Dungeon Card.
+ * So the phase threat the gains of the player in a combat, their defect (in the case of a fight); 
+ * and the putting of a second Dungeon card (in the case of a non-fight).
+ * @author Jérémie
+ *
+ */
 public class PhaseConsequences
 {
-
+	
+	/**
+	 * Launch the phase.
+	 */
 	public static void start()
 	{
 		Player[] tabOfPlayers = Munchkin.getTabOfPlayers();

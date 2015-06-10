@@ -1,6 +1,12 @@
 package global;
 import java.util.Scanner;
 
+/**
+ * The class that give possibility to the application to create the game by asking to the player informations about him.
+ * The game is not created when we call the class.
+ * @author dazyj
+ *
+ */
 
 public class IHMPlayer
 {

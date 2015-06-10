@@ -12,6 +12,13 @@ import global.card.treasure_card.enumeration.*;
 //TODO TESTS
 //TODO CREER CARTES
 
+/**
+ * The application of the Munchkin.
+ * It create a game, create the cards and launch a game.
+ * @author dazyj
+ *
+ */
+
 public class Munchkin
 {
 
@@ -20,10 +27,20 @@ public class Munchkin
 	 */
 	private static int nbPlayer;
 	
+	/**
+	 * The table that contains all the player of the game.
+	 */
 	private static Player[] tabOfPlayers;
 	
+	/**
+	 * The game.
+	 */
 	private static Game gameOfMunchkin;
 	
+	/**
+	 * The execution of the application.
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 		
@@ -33,7 +50,7 @@ public class Munchkin
 	}
 
 	/**
-	* The processus that create the Game.  
+	* The processus that create the Game and launch it.  
 	*/
 	public static void createGame()
 	{
@@ -50,20 +67,30 @@ public class Munchkin
 		gameOfMunchkin.start();
 	}
 	
+	/**
+	 * return the number of players in the game.
+	 * @return
+	 */
 	public static int getNbPlayer()
 	{
 		return nbPlayer;
 	}
 	
+	/**
+	 * return the table of the players.
+	 * @return
+	 */
 	public static Player[] getTabOfPlayers()
 	{
 		return tabOfPlayers;
 	}
 	
+	/**
+	 * return the game.
+	 * @return
+	 */
 	public static Game getGameOfMunchkin()
 	{
 		return gameOfMunchkin;
 	}
-
-
 }

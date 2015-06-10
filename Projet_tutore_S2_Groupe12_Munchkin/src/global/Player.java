@@ -9,6 +9,13 @@ import global.card.treasure_card.enumeration.*;
 
 import java.util.*;
 
+/**
+ * A player of the game.
+ * It represent the person that play to the game AND the personage that they are in the game.
+ * A player has some stats and characteristics that represents him and resolve many situations.
+ * @author dazyj
+ *
+ */
 public class Player
 	{
 		/**
@@ -22,18 +29,39 @@ public class Player
 		 */
 		private HandPlayer hand;
 
+		/**
+		 * The strenghth of the player. It is used in a fight against a monster.
+		 */
 		private int strength;
 
+		/**
+		 * The level of the player. If the level = 10, the player win the game.
+		 */
 		private int level;
 
+		/**
+		 * The race of the player.
+		 */
 		private Race race;
 		
+		/**
+		 * The job of the player.
+		 */
 		private Job job;
 
+		/**
+		 * The id of the player. It identify him in the table of the players.
+		 */
 		private int idPlayer;
 
+		/**
+		 * The money of the player. 1000 = 1 level.
+		 */
 		private int money;
 
+		/**
+		 * The equipment of a player. It can increase his strength during a fight.
+		 */
 		private PlayerEquipment playerEquipment;
 		
 
@@ -79,7 +107,7 @@ public class Player
 
 
 		/**
-		 * The method that send a card from the heap to the hand of the player.
+		 * The method that send a card to the hand of the player.
 		 * 
 		 * @param heap
 		 */
@@ -183,6 +211,10 @@ public class Player
 					}
 			}
 		
+		/**
+		 * Unequip a player from an equipment. 
+		 * @param name
+		 */
 		public void unequip(String name)
 			{
 				ListIterator<Equipment> iterator = this.playerEquipment.getEquipment().listIterator();
@@ -200,7 +232,7 @@ public class Player
 					}
 			}
 		/**
-		 * 
+		 * Discard a card in the hand of the player by using his name.
 		 * @param name
 		 */
 		public void discardPerName(String name)
@@ -217,65 +249,118 @@ public class Player
 					}
 			}
 
+		/**
+		 * return the id of a player
+		 * @return
+		 */
 		public int getId()
 			{
 				return this.idPlayer;
 			}
 
+		/**
+		 * asert a id to the player.
+		 * @param i
+		 */
 		public void asertId(int i)
 			{
 				this.idPlayer = i;
 			}
+		
+		/**
+		 * return the level.
+		 * @return
+		 */
 		public int getLevel()
 			{
 				return this.level;
 			}
 
+		/**
+		 * return the race
+		 * @return
+		 */
 		public Race getRace()
 			{
 				return this.race;
 			}
 		
+		/**
+		 * return the job.
+		 * @return
+		 */
 		public Job getJob()
 		{
 			return this.job;
 		}
 
+		/**
+		 * set the race.
+		 * @param race
+		 */
 		public void setRace(Race race)
 			{
 				this.race = race;
 			}
 		
+		/**
+		 * set the job
+		 * @param job
+		 */
 		public void setJob(Job job)
 		{
 			this.job = job;
 		}
 
+		/**
+		 * return the pseudo.
+		 * @return
+		 */
 		public String getPseudo()
 			{
 				return pseudo;
 			}
 
+		/**
+		 * return the hand.
+		 * @return
+		 */
 		public HandPlayer getHand()
 			{
 				return hand;
 			}
 
+		/**
+		 * return the strength.
+		 * @return
+		 */
 		public int getStrength()
 			{
 				return strength;
 			}
 
+		/**
+		 * set the strength.
+		 * @param strength
+		 */
 		public void setStrength(int strength)
 			{
 				this.strength = strength;
 			}
 
+		/**
+		 * return the equipment.
+		 * @return
+		 */
 		public PlayerEquipment getPlayerEquipment()
 			{
 				return this.playerEquipment;
 			}
 
+		/**
+		 * set the level.
+		 * @param newLevel
+		 */
 		public void setLevel(int newLevel)
 			{
 				this.level = newLevel;
