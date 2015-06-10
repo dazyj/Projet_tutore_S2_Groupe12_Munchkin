@@ -245,7 +245,7 @@ public class Game
 		}
 		
 		/**
-		 * Ask to the player gave from the playe of the fight if he wants help him.
+		 * Ask to the player gave from the player of the fight if he wants help him.
 		 * If he accept, we apply the buff adder to them and see the issue of the fight.
 		 * If he refuse we apply the buff adder to the player of the fight alone and see the issue of the fight. 
 		 * @param help
@@ -333,6 +333,7 @@ public class Game
 		public void fight(Monster monster)
 		{
 			System.out.println("Le Combat commence.");
+			FightTab.editIsWin(false);
 			FightTab.editPlayer(this.identifyPlayerById(Move.getIdPlayersMove()));
 			FightTab.editMonster(monster);
 			// TODO Afficher Monstre
@@ -362,7 +363,7 @@ public class Game
 		}
 		
 		/**
-		 * 
+		 * Calculate the gain of the helper after the victory of a fight.
 		 * @param monsterGain
 		 * @param helper
 		 * @return
@@ -374,7 +375,7 @@ public class Game
 			return monsterGain/2;
 		}
 		/**
-		 * 
+		 * Calculate the gain of a player after the victory of a fight.
 		 * @param monsterGain
 		 * @param player
 		 * @return
@@ -386,7 +387,7 @@ public class Game
 			return monsterGain - (monsterGain/2);
 		}
 		/**
-		 * 
+		 * The method that try for a player to flee if he lose a fight.
 		 * @param player
 		 * @return
 		 */
