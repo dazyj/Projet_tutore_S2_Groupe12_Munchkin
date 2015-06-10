@@ -58,7 +58,8 @@ public class HandPlayer
 			ListIterator<Card> iterator = this.getHandPlayer().listIterator();
 			while(iterator.hasNext())
 				{
-					ch = ch + "|" +iterator.next().toString() + "| \n ";
+					ch = ch + "|" +iterator.next().toString() + "|";
+					ch = ch + "\n";
 				}
 			return ch;
 		}

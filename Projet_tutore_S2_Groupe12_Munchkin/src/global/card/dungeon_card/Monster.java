@@ -79,11 +79,11 @@ public class Monster extends DungeonCard
 			String ch = "";
 			if (this.getHiddenFace())
 			{
-				return ch = ch + " [" +this.category + "] : " +this.getName() + "("+this.level+") [Treasure Gain : " +this.treasureGain+", LevelGain : "+this.levelGain+"]";
+				return ch = ch + " [" +this.category + "] : " +this.getName() + "("+this.level+") [Treasure Gain : " +this.treasureGain+", LevelGain : "+this.levelGain+"] \n";
 			}
 			else
 			{
-				return ch = ch + "["+this.getType()+"]";	
+				return ch = ch + "["+this.getType()+"] \n";	
 			}
 			
 		}

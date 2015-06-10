@@ -50,11 +50,11 @@ public class Equipment extends TreasureCard
 		{
 			if(this.getHiddenFace())
 				{
-					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus :"+this.bonus +", Valeur :"+this.value+" )";
+					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus :"+this.bonus +", Valeur :"+this.value+" ) \n";
 				}
 			else
 				{
-					return "["+this.getType()+"]";
+					return "["+this.getType()+"] \n";
 				}
 			
 		}

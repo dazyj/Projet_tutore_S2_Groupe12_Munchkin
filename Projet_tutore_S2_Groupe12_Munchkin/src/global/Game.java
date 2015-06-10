@@ -79,6 +79,7 @@ public class Game
 						{
 							Munchkin.getTabOfPlayers()[j].sendCard(getDungeonHeap());
 							Munchkin.getTabOfPlayers()[j].sendCard(getTreasureHeap());
+							this.verifVoidHeap();
 						}
 					}
 			}
@@ -125,16 +126,16 @@ public class Game
 		 */
 		public void addBuffToMonster(Monster monster)
 		{
-			for (int i = 0; i < Munchkin.getNbPlayer(); i++)
+			for (int indexOfPlayer = 0; indexOfPlayer < Munchkin.getNbPlayer(); indexOfPlayer++)
 				{
-					String iString = String.valueOf(i);
+					String iString = String.valueOf(indexOfPlayer);
 					Scanner sc1 = new Scanner(System.in);
 					String answer = "OUI";
 					int compare = "OUI".compareTo(answer);
 					while (compare == 0)
 					{
-						System.out.println("Bonjour joueur " + iString + " Voulez-vous ajouter un bonus au monstre ?");
-						System.out.println(Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getHand().getHandPlayer().toString());
+						System.out.println("Bonjour ,"+Munchkin.getTabOfPlayers()[indexOfPlayer].getPseudo()+ " Voulez-vous ajouter un bonus au monstre ?");
+						System.out.println(Munchkin.getTabOfPlayers()[indexOfPlayer].getHand().getHandPlayer().toString());
 						answer = sc1.nextLine();
 						answer.toUpperCase();
 						switch (answer)
@@ -143,7 +144,7 @@ public class Game
 								System.out.println("Choisissez une carte à poser. Rentrer le nom de la carte.");
 								String name = sc1.nextLine();
 								name.toUpperCase();
-								Card card = Munchkin.getTabOfPlayers()[i].chooseCardToPut(name);
+								Card card = Munchkin.getTabOfPlayers()[indexOfPlayer].chooseCardToPut(name);
 								if (card instanceof ConsumableItem)
 								{
 									ConsumableItem itemCard = (ConsumableItem) card;
@@ -175,10 +176,11 @@ public class Game
 		 */
 		public void addBufferToPlayer(Player player)
 		{
-			String answer = "OUI";
-			int compare = "OUI".compareTo(answer);
+			String response = "OUI";
+			int compare = "OUI".compareTo(response);
 			while (compare == 0)
 			{
+				String answer;
 				System.out.println(player.getPseudo()+ ", Voulez-vous rajouter des bonus à vos dégâts ?");
 				Scanner sc1 = new Scanner(System.in);
 				answer = sc1.nextLine();
@@ -228,9 +230,10 @@ public class Game
 							player.setStrength(player.getStrength() + 1);	
 						}							
 						System.out.println(player.toString());
-						compare = "OUI".compareTo(answer);
+						compare = "OUI".compareTo(response);
 					case "NON":
-						compare = "OUI".compareTo(answer);
+						response = "NON";
+						compare = "OUI".compareTo(response);
 			
 				}
 			}
@@ -474,5 +477,31 @@ public class Game
                                     Munchkin.getGameOfMunchkin().getTreasureHeap().getDeck().add(new LevelEffect(myPossibleCards[indexTableau]));
                             }
                     }
-}
+            
+            
+            public void setDungeon(Heap dungeon)
+            {
+            	this.Dungeon = dungeon;
+            }
+            
+            public void setTreasure(Heap treasure)
+            {
+            	this.Treasure = treasure;
+            }
+            /**
+             * 
+             */
+    		public void verifVoidHeap()
+    			{
+    				if(Munchkin.getGameOfMunchkin().getDungeonHeap().getDeck().isEmpty())
+    					{
+    						Munchkin.CreateHeapDungeon();
+    					}
+    				if(Munchkin.getGameOfMunchkin().getTreasureHeap().getDeck().isEmpty())
+    					{
+    						Munchkin.CreateHeapTreasure();
+    					}
+    			}
+}	
+
 

@@ -42,11 +42,11 @@ public class ConsumableItem extends TreasureCard
         {
                 if(this.getHiddenFace())
                         {
-                                return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus :"+this.bonus +")";
+                                return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus :"+this.bonus +") \n";
                         }
                 else
                         {
-                                return "["+this.getType()+"]";
+                                return "["+this.getType()+"] \n";
                         }
                 
         }

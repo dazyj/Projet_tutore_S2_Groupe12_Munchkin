@@ -46,11 +46,11 @@ public class Job extends DungeonCard
 		{
 			if(this.getHiddenFace())
 				{
-					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus :"+this.bonus +","+this.nbMaxCardBurnable+" carte defaussable en combat )";
+					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus :"+this.bonus +","+this.nbMaxCardBurnable+" carte defaussable en combat ) \n";
 				}
 			else
 				{
-					return "["+this.getType()+"]";
+					return "["+this.getType()+"] \n";
 				}
 		}
 

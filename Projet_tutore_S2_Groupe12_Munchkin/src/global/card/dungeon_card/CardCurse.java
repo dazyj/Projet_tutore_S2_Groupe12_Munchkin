@@ -37,11 +37,11 @@ public class CardCurse extends DungeonCard
 		{
 			if(this.getHiddenFace())
 				{
-					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"(remove :"+this.numberCardRemove +" Card )";
+					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"(remove :"+this.numberCardRemove +" Card ) \n";
 				}
 			else
 				{
-					return "["+this.getType()+"]";
+					return "["+this.getType()+"] \n";
 				}
 		}
 		

@@ -37,17 +37,17 @@ public class Race extends DungeonCard
 				{
 					switch(this.getName())
 					{
-						case ("Elf") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( vous gagnez plus 1 niveaux par combat )";
-						case ("Dwarf") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( vous gagnez plus 1 de force en combat )";
-						case ("Human") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( vous êtes nul )";
-						case ("Noob") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( le nom parle de lui même )";
+						case ("Elf") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( vous gagnez plus 1 niveaux par combat ) \n";
+						case ("Dwarf") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( vous gagnez plus 1 de force en combat ) \n";
+						case ("Human") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( vous êtes nul ) \n";
+						case ("Noob") :return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( le nom parle de lui même )\n";
 					}
 						
 					
 				}
 			else
 				{
-					return "["+this.getType()+"]";
+					return "["+this.getType()+"] \n";
 				}
 			return null;
 		}

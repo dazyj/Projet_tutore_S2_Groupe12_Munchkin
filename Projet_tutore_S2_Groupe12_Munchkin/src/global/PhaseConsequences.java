@@ -103,7 +103,7 @@ public class PhaseConsequences
 		else
 		{
 			System.out.println("vous pillez la pièce !");
-			tabOfPlayers[Move.getIdPlayersMove()].sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
+			Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getHand().getHandPlayer().add(Munchkin.getGameOfMunchkin().getDungeonHeap().RemoveFirstCard());
 		}
 	}
 }

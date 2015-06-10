@@ -2,8 +2,8 @@ package global.card.dungeon_card.enumeration;
 
 public enum DungeonCardCategory
 	{
-		race("race"), job("job"), monster("monster"), monster_curse(
-				"monster curse"), card_curse("card curse"),equipment("equipment");
+		race("RACE"), job("JOB"), monster("MONSTER"), monster_curse(
+				"MONSTER CURSE"), card_curse("CARD CURSE"),equipment("EQUIPEMENT");
 
 		private final String name;
 

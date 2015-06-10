@@ -4,8 +4,8 @@ import global.Player;
 
 public enum LevelEffectSpecification
 	{
-		Steal_Level("Steal level", 1, 1), thousand_Gold_Piece(
-				"Thousand Gold Piece", 1, 0), downLevel("Downlevel", 0, 1);
+		Steal_Level("STEAL LEVEL", 1, 1), thousand_Gold_Piece(
+				"THOUSAND GOLD PIECE", 1, 0), downLevel("DOWNLEVEL",0,1);
 
 		private final String name;
 		/**

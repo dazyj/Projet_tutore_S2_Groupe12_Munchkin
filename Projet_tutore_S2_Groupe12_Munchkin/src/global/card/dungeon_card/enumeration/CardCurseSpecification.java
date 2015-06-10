@@ -2,9 +2,9 @@ package global.card.dungeon_card.enumeration;
 
 public enum CardCurseSpecification
 	{
-		steal("steal",1),
-		amnesia("amnesia",2),
-		remove("Remove",1);
+		steal("STEAL",1),
+		amnesia("AMNESIA",2),
+		remove("REMOVE",1);
 		private final String name;
 		
 		private final int  numberCardRemove;

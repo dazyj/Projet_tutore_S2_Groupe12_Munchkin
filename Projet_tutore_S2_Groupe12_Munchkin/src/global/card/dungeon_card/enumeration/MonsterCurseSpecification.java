@@ -2,7 +2,7 @@ package global.card.dungeon_card.enumeration;
 
 public enum MonsterCurseSpecification
 	{
-		mad("mad",5, 1), huge("huge",10, 2), baby("baby",-5, -1);
+		mad("MAD",5, 1), huge("HUGE",10, 2), baby("BABY",-5, -1);
 		private final String name;
 		
 		private final int monsterLevelEffect;

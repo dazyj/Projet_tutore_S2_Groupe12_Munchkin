@@ -55,7 +55,6 @@ public class Heap
 			{
 				this.deck.get(0).setHiddenFace(true);
 				return this.deck.remove(0);
-				
 			}
 
 		/**
@@ -66,5 +65,8 @@ public class Heap
 			{
 					return this.cardType;
 			}
+		
+		
+
 
 	}

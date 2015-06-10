@@ -70,12 +70,11 @@ public class PhasePersonnalPhase
 									int compare = approve.compareTo("OUI");
 									if (compare == 0)
 									{
-										System.out.println(Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getHand().getHandPlayer().toString());
+										System.out.println(Munchkin.getTabOfPlayers()[indexOfPlayers].getHand().getHandPlayer().toString());
 										System.out.println("Sélectionnez un objet de votre main à échanger (équipement ou objet consommable)");
 										String nameItem2 = sc1.nextLine();
 										nameItem2.toUpperCase();
-										Card card2 = Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].chooseCardToPut(nameItem2);
-										TreasureCard cardToTrade2 = (TreasureCard) card2;
+										TreasureCard cardToTrade2 = (TreasureCard) Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].chooseCardToPut(nameItem2);
 										System.out.println(cardToTrade2.toString());
 										System.out.println(Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getPseudo() + " confirmez-vous l'échange ?");
 										approve = sc1.nextLine();
@@ -85,9 +84,11 @@ public class PhasePersonnalPhase
 											Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].sendCardHand(cardToTrade2);
 											Munchkin.getTabOfPlayers()[indexOfPlayers].sendCardHand(cardToTrade);
 										}
+										break;
 									}
-									break;
+									
 								}
+								
 							}						
 						case "NON":
 							confirm = false;

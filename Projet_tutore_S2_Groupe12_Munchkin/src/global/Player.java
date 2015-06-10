@@ -141,6 +141,7 @@ public class Player
 						Card cardRemove = heap.RemoveFirstCard();
 						cardRemove.setHiddenFace(true);
 						this.hand.getHandPlayer().add(cardRemove);
+						Munchkin.getGameOfMunchkin().verifVoidHeap();
 					}
 			}
 
@@ -416,13 +417,8 @@ public class Player
 		public String toString()
 			{
 				String ch = "";
-				ch = ch + " [" + this.getPseudo() + "] : Strength : ("
-						+ this.getStrength() + ") Level : (" + this.getLevel()
-						+ ") Race : (" + this.getRace().getName() + ") Job : ("
-						+ this.getJob().getName() + ") Money : ("
-						+ this.getMoney() + ") \n";
-				ch = ch + " [" + this.getPseudo() + "] : Equipment : "
-						+ this.getPlayerEquipment().toString();
+				ch = ch + " [" + this.getPseudo() + "] : Strength : ("+ this.getStrength() + ") Level : (" + this.getLevel()+ ") Race : (" + this.getRace().getName() + ") Job : ("+ this.getJob().getName() + ") Money : ("+ this.getMoney() + ") \n";
+				ch = ch + " [" + this.getPseudo() + "] : Equipment : "+ this.getPlayerEquipment().toString();
 				return ch;
 
 			}

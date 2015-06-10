@@ -6,7 +6,7 @@ package global.card.treasure_card.enumeration;
  */
 public enum EquipmentSpecification
 	{
-		sword_of_bastard("bastard (of) sword",2,400),Lance("Lance",2,700);
+		sword_of_bastard("BASTARD OF SWORD",2,400),Lance("LANCE",2,700);
 
 		private final String name;
 		

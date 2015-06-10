@@ -55,11 +55,11 @@ public class LevelEffect extends TreasureCard
              {
                      if(this.getHiddenFace())
                              {
-                                     return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( Augmentation de niveaux :"+this.LevelNumberUp +", Suppression de niveaux :"+this.levelNumberLess+" )";
+                                     return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( Augmentation de niveaux :"+this.LevelNumberUp +", Suppression de niveaux :"+this.levelNumberLess+" ) \n";
                              }
                      else
                              {
-                                     return "["+this.getType()+"]";
+                                     return "["+this.getType()+"] \n";
                              }
                      
              }

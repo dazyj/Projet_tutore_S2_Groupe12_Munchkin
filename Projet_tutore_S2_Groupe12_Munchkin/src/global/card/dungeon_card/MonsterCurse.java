@@ -53,7 +53,7 @@ public class MonsterCurse extends DungeonCard
 		{
 			if(this.getHiddenFace())
 				{
-					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus du monstre :"+this.monsterLevelEffect +", bonus en gain :"+this.treasureCardEffect+")";
+					return "[" +this.getType()+" :"+this.category+"] "+this.getName()+"( bonus du monstre :"+this.monsterLevelEffect +", bonus en gain :"+this.treasureCardEffect+") \n";
 				}
 			else
 				{

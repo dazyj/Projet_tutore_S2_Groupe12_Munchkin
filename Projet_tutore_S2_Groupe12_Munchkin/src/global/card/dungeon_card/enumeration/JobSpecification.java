@@ -2,10 +2,10 @@ package global.card.dungeon_card.enumeration;
 
 public enum JobSpecification
 	{
-		Noob("Noob",0,0),
-		Warrior("Warrior",2,3),
-		Rogue("Rogue",3,3),
-		priest("Priest",1,3);
+		Noob("NOOB",0,0),
+		Warrior("WARRIOR",2,3),
+		Rogue("ROGUE",3,3),
+		priest("PRIEST",1,3);
 		
 		private final String name;
 		
