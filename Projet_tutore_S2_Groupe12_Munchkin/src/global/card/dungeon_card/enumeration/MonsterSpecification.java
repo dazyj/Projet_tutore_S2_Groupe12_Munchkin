@@ -9,7 +9,7 @@ import global.card.treasure_card.enumeration.*;
 
 public enum MonsterSpecification
 	{
-		bailiff("BAILIFFF",6,1,2),Gobelin("GOBELIN",3,1,1),licorn("LICORNE",5,2,2),Orc("ORC",9,3,4);
+		bailiff("HUISSIER",6,1,2),Gobelin("GOBELIN",3,1,1),licorn("LICORNE",5,2,2),Orc("ORC",9,3,4),Balrog("BALROG",25,6,8),fée("FEE",1,1,1),pepito("PEPITO",5,1,1),DEMON("DEMON",7,2,2),DRAGON("DRAGON",15,2,1),PAPATISSIER("PAPATISSIER",2,2,2),Geant("GEANT",7,3,2),Pikachu("PIKACHU",7,2,1);
 		
 		private final String name;
 		

@@ -23,7 +23,7 @@ public class PhasePersonnalPhase
 	 */
 	public static void start()
 	{
-			
+			PhaseDungeonCard1.setToFight(false);
 			boolean test = false;
 			while (Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getHand().getHandPlayer().size() > 5 || test == false)
 			{
@@ -78,7 +78,7 @@ public class PhasePersonnalPhase
 										System.out.println("Sélectionnez un objet de votre main à échanger (équipement ou objet consommable)");
 										String nameItem2 = sc1.nextLine();
 										nameItem2.toUpperCase();
-										TreasureCard cardToTrade2 = (TreasureCard) Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].chooseCardToPut(nameItem2);
+										TreasureCard cardToTrade2 = (TreasureCard) Munchkin.getTabOfPlayers()[indexOfPlayers].chooseCardToPut(nameItem2);
 										System.out.println(cardToTrade2.toString());
 										System.out.println(Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getPseudo() + " confirmez-vous l'échange ?");
 										approve = sc1.nextLine();
@@ -215,8 +215,6 @@ public class PhasePersonnalPhase
 							race = false;
 					}
 				}
-				System.out.println(Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].getHand().getHandPlayer().toString());
-				System.out.println(Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].toString());
 			}
 	}
 }

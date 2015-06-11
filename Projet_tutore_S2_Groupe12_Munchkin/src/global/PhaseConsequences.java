@@ -70,6 +70,12 @@ public class PhaseConsequences
 					{
 						System.out.println("vous êtes mort !");
 						Munchkin.getGameOfMunchkin().deathPlayer(tabOfPlayers[Move.getIdPlayersMove()]);
+						for (int k = 0; k < 4; k++)
+							{
+								Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].sendCard(Munchkin.getGameOfMunchkin().getDungeonHeap());
+								Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()].sendCard(Munchkin.getGameOfMunchkin().getTreasureHeap());
+								Munchkin.getGameOfMunchkin().verifVoidHeap();
+							}
 					}
 					else
 					{

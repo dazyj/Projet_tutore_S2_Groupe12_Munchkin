@@ -39,13 +39,15 @@ public class Move
 			else 
 				idPlayersMove = 0;
 			Player playerMove = Munchkin.getTabOfPlayers()[Move.getIdPlayersMove()];
-			System.out.println(playerMove.getHand().getHandPlayer().toString());
+			System.out.println("---------------- TOUR de "+playerMove.getPseudo()+" ----------------------- \n\n");
+			System.out.println(playerMove.toString());
+			System.out.println(playerMove.getHand().toString());
 			PhaseDungeonCard1.start();
-			System.out.println(playerMove.getHand().getHandPlayer().toString());
+			System.out.println(playerMove.getHand().toString());
 			PhaseConsequences.start();
-			System.out.println(playerMove.getHand().getHandPlayer().toString());
+			System.out.println(playerMove.getHand().toString());
 			PhasePersonnalPhase.start();
-			System.out.println(playerMove.getHand().getHandPlayer().toString());
+			System.out.println(playerMove.getHand().toString());
 			System.out.println(playerMove.toString());
 
 		}

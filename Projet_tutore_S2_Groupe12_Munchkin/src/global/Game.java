@@ -147,7 +147,7 @@ public class Game
 					while (compare == 0)
 					{
 						System.out.println("Bonjour ,"+Munchkin.getTabOfPlayers()[indexOfPlayer].getPseudo()+ " Voulez-vous ajouter un bonus au monstre ?");
-						System.out.println(Munchkin.getTabOfPlayers()[indexOfPlayer].getHand().getHandPlayer().toString());
+						System.out.println(Munchkin.getTabOfPlayers()[indexOfPlayer].getHand().toString());
 						answer = sc1.nextLine();
 						answer.toUpperCase();
 						switch (answer)
